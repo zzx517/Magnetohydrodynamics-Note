@@ -1,0 +1,291 @@
+
+\chapter{一维磁流体力学不稳定性}
+
+\section{不稳定性的基本概念}
+
+一个磁流体体系在达到平衡态后仍可以有偏离平衡值的扰动存在。对处在热平衡态附近的磁流体体系来说这种扰动一般是局部的、无规的、随生随灭的。但当磁流体处在非热力学平衡态，其内部存在着可以转换成扰动能量的自由能时，在合适的条件下有些扰动就可能发展成为在大范围、长时间、能量超过热噪声水平的大幅度集体运动。这种集体运动就称为不稳定的模式，相应现象就称为磁流体的不稳定性。
+
+按照扰动的空间与时间的特征尺度
+\begin{itemize}
+    \item 宏观不稳定性，位形空间不稳定性，磁流体力学不稳定性；
+    \item 微观不稳定性，速度空间不稳定性，动理学不稳定性。
+\end{itemize}
+
+扰动是静电的还是电磁的
+\begin{itemize}
+    \item 静电不稳定性；
+    \item 电磁不稳定性。
+\end{itemize}
+
+驱动引起不稳定性的自由能的来源
+\begin{itemize}
+    \item 磁场引起电流不稳定性；
+    \item 非极小磁场位形中等离子体的膨胀引起交换不稳定性；
+    \item 密度、温度的空间梯度引起漂移不稳定性。
+\end{itemize}
+
+研究等离子体中的不稳定性，一般有两种方法
+\begin{description}
+    \item[简正模] 将不稳定性的振荡作为本征值问题来处理。
+    \item[能量原理] 当扰动使动能增加、势能减少，这时体系趋向不稳定。
+\end{description}
+
+\section{简正模分析}
+
+\subsection{RT 不稳定性}
+
+平衡量：
+$\rho_0 = \rho_0(x),
+\vector{g} = - g \vector{e}_x,
+\vector{B}_0 = B_0(x) \vector{e}_z,
+\vector{u}_0 = 0 $ 。
+扰动量：
+$f_1 = f_x(x) \exp{[\im (k_y y + k_z z - \omega t)]},
+\dive{\vector{u}_1} = 0 $ 。
+
+平衡条件可以写成：
+\begin{equation}
+\Deriv{}{x} \left(p_0 + \frac{B_0^2}{2 \mu_0} \right) + \rho_0 g = 0
+\end{equation}
+
+\begin{equation} \label{eq:0521temp1}
+\pDeriv{}{x} \left[
+    \rho_0 \left( \omega^2 - v_A^2 k_z^2 \right)
+    \pDeriv{u_x}{x}
+\right]
+= \left[
+    \rho_0 \left( \omega^2 - v_A^2 k_z^2 \right)
+    - g \Deriv{\rho_0}{x}
+\right] u_x k^2
+\end{equation}
+
+\paragraph{锐边界条件}
+在 $x \neq 0$ 的两个地区内，平衡量都是均匀的，只在界面上存在变化。
+
+将式 \ref{eq:0521temp1} 跨越分界面积分得
+\begin{equation}
+\omega^2
+= \frac{B_1^2 + B_2^2}{\mu_0 \left(\rho_1 + \rho_2\right)} k_\parallel^2
+- A_T g k
+\end{equation}
+其中，$A_T = \dfrac{\rho_2 - \rho_1}{\rho_1 + \rho_2}$ 为阿特伍德（Atwood）数。
+当 $\rho_2 > \rho_1$ 时，重力加速度是起着退稳作用。
+第一项是联合阿尔芬速度项，反应了剪切磁场一贯的致稳作用。
+
+在磁约束等离子体中，由于 $\beta \ll 1$，阿尔芬速度的致稳效果远大于重力加速度的退稳作用的，
+因此只有在 $k_\parallel = 0$ 的极端情况下，才能发生重力不稳定性。
+或者在天体等离子体环境中，磁场效应可以直接忽略，此时经典流体中 RT 不稳定性的增长率为
+\begin{equation}
+\omega_i = \sqrt{A_T g k}
+\end{equation}
+
+\paragraph{固定边界条件} 在 $x = 0, h$ 处，扰动为零。密度满足 $\rho_0(x) = \rho_{0,c} \exp{(- x / L_D)} $，磁场满足 $B_0(x) = B_{0,c} \exp{(- x / 2 L_D)}$，扰动具有形式
+\begin{equation}
+u_x = u_{x,c} \sin{\left(\frac{n \pi x}{h}\right)} \eu^{\lambda x}
+\end{equation}
+
+\begin{equation}
+\omega^2 = v_{A,c}^2 k^2 - \frac{ k^2}{4 h^2 L_D^2 k^2 + 4 \pi^2 L_D^2 n^2}
+\end{equation}
+这一结果可以描述两端存在导体壁情况下，等离子体在重力作用下的不稳定性。
+
+\paragraph{RT 不稳定性的典型演化过程}
+可以分成如下五个阶段：
+\begin{enumerate}
+\item 指数发展阶段或小扰动阶段。在这个阶段中，线性化理论是适用
+的，扰动的幅度远小于扰动的波长，界面上的扰动按指数形式增
+长。原先的谐波维持其特性。这个阶段的扰动振幅不超过 $0.4\lambda$，$\lambda$
+是扰动波长。
+\item 变形阶段。这个阶段扰动幅度变化的范围大约在 $0.4\lambda$ \~{} $0.8\lambda$。这
+时非线性作用开始显著，原先上下相似的谐波形状的界面扰动逐
+渐变为上钝下尖的形状，上钝的部分称为“气泡（bubble）”，下
+尖的部分称为“尖顶（spike）”。
+\item 规则的非线性阶段。这个阶段大致从扰动幅度 $0.8\lambda$ 开始。这时明
+显的气泡-尖顶形状结构形成，气泡以常速度沿重力场的反方向进
+入重流体内部，尖顶以定常加速度沿重力场方向进入轻流体内部。
+\item 不规则的非线性阶段。这时在尖顶表面附近，两侧流体沿表面的
+速度的差异增大，KH 不稳定性开始起作用，在尖顶的头部会形
+成翻滚的“蘑菇”形状结构。
+\item 湍流混合或统计阶段。由于交界面扭曲，微小部分液滴相互渗透，
+相互混合，大量的高次谐波被激发，原始交界面扰动的特征波长
+已经不起作用，混合区的宽度与初始扰动的特征波长没有关系。
+\end{enumerate}
+
+\subsection{KH 不稳定性}
+
+KH 不稳定性指的是层流之间的相对运动导致的不稳定性，即在连续流体内部的速度剪切或有速度差的两个不同流体的界面之间发生的不稳定现象。
+
+我们依然采用不可压缩、无粘滞的理想 MHD 方程组来研究 KH 不稳定性，并且考虑无磁化、无重力加速度的情况，但需要保留平衡流。
+
+动量方程 + 不可压缩条件 + $\vector{e}_y \cdot \curl{} = 0$
+
+对 KH 不稳定性来说，如果采用简正模的做法，将初始值问题简化成本征模问题，平滑剪切流的谱是稳定的。
+但是，无论是实验观测，还是数值模拟都表明，上述谱稳定的剪切流都是不稳定的。
+这是因为各个本征函数之间存在强烈的干扰，线性稳定本征函数的叠加可能会产生一个不稳定的解。
+
+\paragraph{锐边界条件}
+
+\begin{equation}
+\omega = k \frac{\rho_1 u_1 + \rho_2 u_2}{\rho_1 + \rho_2}
++ \im \frac{k}{2} \ab|u_1 - u_2| \sqrt{1 - A_T^2}
+\end{equation}
+
+\begin{enumerate}
+    \item 增长率正比于相对速度差；
+    \item 即使界面两侧流体是同样的流体（$\rho_1 = \rho_2, A_T = 0$），只要存在相对速度差，依然会有不稳定性产生。
+\end{enumerate}
+
+\subsection{RM 不稳定性}
+
+当激波入射到受扰动的流体界面或者受扰动的流体界面被突然加速时，通常会有 Richtmyer-Meshkov（RM）不稳定性的发生。
+
+RM 不稳定性的发展也可以分成四个阶段，简单来说 [79]：
+1. 激波的分叉阶段。在这个阶段，激波入射到分界面上，与界面相
+互作用产生透射激波和反射波。反射波可以是激波也可以稀疏波，
+视流体的具体性质而定。
+2. 不稳定性的线性增长阶段。由于界面与激波的相互作用，将造成
+分界面上的压强梯度与密度梯度不再平行，会在界面上产生涡旋
+量。由于这个涡旋量的作用，分界面上的扰动就会迅速发展，分
+界面的宽度也会迅速增加。这时，重流体就会突入轻流体中形成
+“尖钉”状结构，而轻流体会突入重流体中形成“气泡”状结构。
+在这个阶段，界面的扰动幅度远小于界面的扰动波长，因此可以
+用线性理论描述不稳定性的增长。
+3. 不稳定性的非线性增长阶段。这是，“尖钉”状结构变窄而“气泡”
+状结构变宽，且“尖钉”状结构的增长速度大于“气泡”状结构
+的速度。在该阶段的后期，由于出现次级不稳定性，比如 KH 不
+稳定性，界面上形成“蘑菇”状结构。
+4. 湍流阶段。这个阶段，次级不稳定性比如 KH 不稳定性等将变得
+重要。“尖钉”状结构将被破坏，形成一个个的“液滴”状结构。
+流体的行为变得更加复杂。
+
+我们依然采用不可压缩、无粘滞的理想 MHD 方程组来研究 RM 不稳定性，并考虑平衡剪切磁场和一个瞬时作用。
+
+\section{能量原理的扰动方程及 \texorpdfstring{$\mathscr{F}$}{F} 算子}
+
+如果我们不拘泥于增长率，只想获得系统稳定与否的判据，则能量原理提供了绝佳的帮助。
+
+不可压缩、无粘滞的理想 MHD 方程组，无平衡流。
+
+\begin{equation}
+\rho_0 \pDerivS{\vector{\xi}}{t} = \mathscr{F} \vector{\xi}
+\end{equation}
+其中，$\mathscr{F}$ 是一个线性的二阶微分张量算子：
+% \begin{equation}\begin{aligned}
+% \mathscr{F} \xi &= \grad{\ab()}
+% \end{aligned}\end{equation}
+
+\subsection{\texorpdfstring{$\mathscr{F}$}{F} 算子的自伴性}
+
+对任意的矢量场 $\vector{\xi}$ 和 $\vector{\eta}$, 满足等式
+\begin{equation}
+\int \vector{\eta} \cdot \mathscr{F} \vector{\xi} \d V
+= \int \vector{\xi} \cdot \mathscr{F} \vector{\eta} \d V
+\end{equation}
+
+由 F 算子的自伴性可以轻松证明以下三点：
+1. $\omega^2$ 为实数;
+2. 满足运动方程的 $\vector{\xi}$ 是实矢量;
+3. 不同分立本征值 $\omega_n$ 所对应的本征矢 $\vector{\xi}_n$ 彼此正交。
+
+\subsubsection{无穷大磁流体体系下 \texorpdfstring{$\mathscr{F}$}{F} 算子的自伴性的证明}
+
+对于无穷大磁流体体系，边界处的平衡量及扰动量都可以视作零，因此理想磁流体体系的哈密顿量
+\begin{subequations}\begin{align}
+H &= \int \ab(
+    \frac12 \rho \vector{u}^2
+    + \frac{\vector{B}^2}{2\mu_0}
+    + \frac{p}{\gamma - 1}
+) \d V
+= K + W \\
+K &= \int \frac12 \rho \vector{u}^2 \d V \\
+W &= \int \ab(
+    \frac{\vector{B}^2}{2\mu_0}
+    + \frac{p}{\gamma - 1}
+) \d V
+\end{align}\end{subequations}
+
+由于理想磁流体体系是一个保守系，总哈密顿量 (能量) 守恒，其中零阶和一阶哈密顿量又分别守恒，所以 (在准确到微扰展开的二阶) 二阶的哈密顿量也应是守恒量
+
+\begin{equation}
+\int \pDeriv{\vector{\xi}}{t} \cdot \mathscr{F} \vector{\xi}
+= - \pDeriv{\delta W_2}{t}
+= - \delta W_2\ab(\vector{\xi}, \pDeriv{\vector{\xi}}{t})
+- \delta W_2\ab(\pDeriv{\vector{\xi}}{t}, \vector{\xi})
+\end{equation}
+
+\subsubsection{柱形磁流体体系下 \texorpdfstring{$\mathscr{F}$}{F} 算子的自伴性的证明}
+
+\begin{equation}
+H(t) = \int \ab[
+    \frac12 \rho_0 \ab(\pDeriv{\vector{\xi}}{t})^2
+    - \frac12 \vector{\xi} \cdot \mathscr{F} \vector{\xi}
+] \d V
+\end{equation}
+
+待续
+
+\subsection{变分原理计算本征模}
+
+\begin{equation}
+\Omega^2(\vector{\xi}^*, \vector{\xi})
+= \dfrac{
+    - \int \vector{\xi}^* \cdot \mathscr{F} \vector{\xi} \d V
+}{
+    \int \rho_0 \vector{\xi}^* \cdot \vector{\xi} \d V
+}
+\end{equation}
+
+\section{能量原理与势能函数的极小化}
+
+平衡位形的稳定条件是：
+对于所有满足边界条件的可能的位移 $\vector{\xi}$ 和矢势 $\vector{A}_1$，势能变化 $\delta W$ 为正，或者 $\delta W$ 的极小值须为正。
+这就是磁流体力学体系下的能量原理。
+
+\section{理想磁流体中的不稳定性概述与分类}
+
+\begin{itemize}
+    \item 内模（固定边界模, 无边界扰动）；
+    \item 外模（自由边界模）。
+\end{itemize}
+
+\begin{itemize}
+    \item 扭曲（kink）模；
+    \item 交换（interchange）模；
+    \item 气球（ballooning）模。
+\end{itemize}
+
+\subsection{交换（interchange）模}
+
+交换模是压强梯度驱动的内部模，它并不一定是体系真正的扰动形式，而是代表一种特殊的不弯曲磁力线的试探函数。
+这种不稳定性是否会发生，取决于曲率的好与坏。好曲率意味着磁力线处处凸向等离子体。
+我们常把这种凸向磁流体的磁场位形称为磁阱、磁瓶或磁笼，即所谓最小磁场稳定条件。
+其本质是：等离子体具有抗磁性，因而总是倾向于往磁场最小的区域移动。
+
+槽纹（flute）不稳定性， Kruskal–Schwarzschild 不稳定性。垂直波长最短的扰动最不稳定。
+
+因此要稳定交换模，有两种主要方式：
+\begin{enumerate}
+    \item 增强磁剪切。
+    \item 平均磁阱。
+\end{enumerate}
+
+\subsection{ 扭曲（kink）模}
+
+扭曲模是平行电流所携带的自由能所驱动的模。
+
+\subsubsection{外扭曲模}
+
+很长的平行波长和较短的垂直方向波长。
+垂直方向长波破坏力大，但是发生不稳定的可能性小。
+
+\section{一维箍缩的理想磁流体不稳定性}
+
+\subsection{\texorpdfstring{$\theta$}{theta} 箍缩中的不稳定性}
+
+$\theta$ 箍缩不存在任何磁流体力学的不稳定性。
+
+\subsection{Z 箍缩中的不稳定性}
+
+短波容易不稳定。
+
+\subsection{螺旋箍缩的不稳定性与 Suydam 判据}
