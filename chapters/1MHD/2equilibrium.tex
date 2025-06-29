@@ -1,24 +1,24 @@
 
 \chapter{磁流体力学平衡}
 
-在理想磁流体力学方程组中，令 $\pDerivd{}{t} = 0, \vector{u} = 0$，即可得到理想磁流体力学平衡方程组：
+在理想磁流体力学方程组中，令 $\pdv{}{t} = 0, \vec{u} = 0$，即可得到理想磁流体力学平衡方程组：
 \begin{subequations}\begin{align}
-    \vector{J} \times \vector{B} &= 0 \\
-    \vector{J} &= \mu_0 \curl{\vector{B}} \\
-    \dive{\vector{B}} &= 0
+    \vec{J} \times \vec{B} &= 0 \\
+    \vec{J} &= \mu_0 \curl{\vec{B}} \\
+    \dive{\vec{B}} &= 0
 \end{align}\end{subequations}
 
-消去电流密度 $\vector{J}$ ，则
+消去电流密度 $\vec{J}$ ，则
 \begin{equation}
-    \grad{\left( p + \frac{\vector{B}^2}{2 \mu_0} \right)} = \frac{1}{\mu_0} \vector{B} \cdot \grad{\vector{B}}
+    \grad{\ab( p + \frac{\vec{B}^2}{2 \mu_0} )} = \frac{1}{\mu_0} \vec{B} \cdot \grad{\vec{B}}
 \end{equation}
 等价于
 \begin{equation}
-    \nabla_\perp \left( p + \frac{\vector{B}^2}{2 \mu_0} \right) = \frac{\vector{B}^2}{\mu_0} \vector{\kappa}
+    \nabla_\perp \ab( p + \frac{\vec{B}^2}{2 \mu_0} ) = \frac{\vec{B}^2}{\mu_0} \vec{\kappa}
 \end{equation}
 当磁力线为平行直线时，上式右边为零，则
 \begin{equation}
-    p + \frac{\vector{B}^2}{2 \mu_0} = \text{const} = \frac{\vector{B}_0^2}{2 \mu_0}
+    p + \frac{\vec{B}^2}{2 \mu_0} = \text{const} = \frac{\vec{B}_0^2}{2 \mu_0}
 \end{equation}
 
 \section{一维平衡问题}
@@ -27,11 +27,11 @@
 
 平衡量具有如下形式：
 \begin{subequations}\begin{align}
-\vector{B} &= B(\rho) \vector{e}_z \\
-\vector{J} &= \mu_0 \pDeriv{B}{\rho} \vector{e}_\theta
+\vec{B} &= B(\rho) \vec{e}_z \\
+\vec{J} &= \mu_0 \pdv{B}{\rho} \vec{e}_\theta
 \end{align}\end{subequations}
 
-由于 $p + \frac{\vector{B}^2}{2 \mu_0} = \text{const}$，则外面（$\rho$大）的磁场大，里面（$\rho$小）的磁场小，形成磁阱，体现的是等离子体的抗磁性。
+由于 $p + \frac{\vec{B}^2}{2 \mu_0} = \text{const}$，则外面（$\rho$大）的磁场大，里面（$\rho$小）的磁场小，形成磁阱，体现的是等离子体的抗磁性。
 
 为了表示磁场约束的效率，引入比压 $\beta$ 的概念：
 \begin{subequations}\begin{align}
@@ -46,17 +46,17 @@
 
 平衡量具有如下形式：
 \begin{subequations}\begin{align}
-\vector{B} &= B(\rho) \vector{e}_\theta \\
-\vector{J} &= J(\rho) \vector{e}_z
+\vec{B} &= B(\rho) \vec{e}_\theta \\
+\vec{J} &= J(\rho) \vec{e}_z
 \end{align}\end{subequations}
 则平衡方程为
 \begin{equation}
-\grad{\left( p + \frac{B^2}{2 \mu_0} \right)}
-= \frac{B}{\mu_0 \rho} \pDeriv{(B \vector{e}_\theta)}{\theta}
+\grad{\ab( p + \frac{B^2}{2 \mu_0} )}
+= \frac{B}{\mu_0 \rho} \pdv{(B \vec{e}_\theta)}{\theta}
 \end{equation}
 化简得
 \begin{equation}
-\Deriv{}{\rho} \left( p + \frac{B^2}{2 \mu_0} \right)
+\odv{}{\rho} \ab( p + \frac{B^2}{2 \mu_0} )
 + \frac{B^2}{\mu_0 \rho} = 0
 \end{equation}
 这个平衡方程的解并不唯一。
@@ -65,12 +65,12 @@
 
 平衡量具有如下形式：
 \begin{subequations}\begin{align}
-\vector{B} &= B_\theta(\rho) \vector{e}_\theta + B_z(\rho) \vector{e}_z \\
-\vector{J} &= J_\theta(\rho) \vector{e}_\theta + J_z(\rho) \vector{e}_z
+\vec{B} &= B_\theta(\rho) \vec{e}_\theta + B_z(\rho) \vec{e}_z \\
+\vec{J} &= J_\theta(\rho) \vec{e}_\theta + J_z(\rho) \vec{e}_z
 \end{align}\end{subequations}
 则平衡方程为
 \begin{equation}
-\Deriv{}{\rho} \left( p + \frac{B_\theta^2 + B_z^2}{2 \mu_0} \right)
+\odv{}{\rho} \ab( p + \frac{B_\theta^2 + B_z^2}{2 \mu_0} )
 + \frac{B_\theta^2}{\mu_0 \rho} = 0
 \end{equation}
 由于没有其他限制，所以 $B_\theta(\rho), B_z(\rho), p(\rho)$可以有多种选择，故螺旋箍缩可能有的平衡位形是很多的。
@@ -81,9 +81,9 @@
 
 在磁面坐标系 $(\rho, \theta, \zeta)$，下考察环向对称的托卡马克的平衡。其中，$\zeta$ 等于柱坐标下的环向角，有
 \begin{subequations}\begin{align}
-\grad{\zeta} &= \frac{1}{R} \hat{\vector{e}}_\zeta \\
+\grad{\zeta} &= \frac{1}{R} \hat{\vec{e}}_\zeta \\
 \grad{\rho} \times \grad{\theta} &= \frac{R^2}{\Jacobian} \grad{\zeta} \\
-\laplace{\zeta} &= 0
+\laplacian{\zeta} &= 0
 \end{align}\end{subequations}
 同时，由于轴对称，有
 \begin{equation}
@@ -92,120 +92,120 @@
 
 托卡马克的轴对称平衡磁场可以写成
 \begin{equation}
-\vector{B} = I(\ToroidalFlux) \grad{\zeta}
-+ \grad{\zeta} \times \grad{\ToroidalFlux}
+\vec{B} = I(\psi) \grad{\zeta}
++ \grad{\zeta} \times \grad{\psi}
 \end{equation}
-其中，$\ToroidalFlux = \ToroidalFlux(\rho)$ 为极向磁通！！！。
+其中，$\psi = \psi(\rho)$ 为极向磁通。
 
 易证，此形式的磁场自然满足平行于磁面的要求：
 \begin{equation}\begin{aligned}
-B^\rho &= \grad{\rho} \cdot \vector{B} \\
-&= I \contraMetric{\rho\zeta} \\
+B^\rho &= \grad{\rho} \cdot \vec{B} \\
+&= I \Metric^{\rho\zeta} \\
 &= 0
 \end{aligned}\end{equation}
 
 电流密度为
 \begin{equation}
-\vector{J} = \frac{1}{\mu_0} \curl{\vector{B}} =
+\vec{J} = \frac{1}{\mu_0} \curl{\vec{B}} =
 \frac{1}{\mu_0} \ab\big[
-    \curl{\ab(\grad{\zeta} \times \grad{\ToroidalFlux})}
-    - I' \ab(\grad{\zeta} \times \grad{\ToroidalFlux})
+    \curl{\ab(\grad{\zeta} \times \grad{\psi})}
+    - I' \ab(\grad{\zeta} \times \grad{\psi})
 ]
 \end{equation}
 % 其中
 % \begin{equation}
-% \curl{\ab(\grad{\zeta} \times \grad{\ToroidalFlux})}
-% = \laplace{\ToroidalFlux} \grad{\zeta}
-% - \laplace{\zeta} \grad{\ToroidalFlux}
-% = \laplace{\ToroidalFlux} \grad{\zeta}
+% \curl{\ab(\grad{\zeta} \times \grad{\psi})}
+% = \laplacian{\psi} \grad{\zeta}
+% - \laplacian{\zeta} \grad{\psi}
+% = \laplacian{\psi} \grad{\zeta}
 % \end{equation}
 % 则
 % \begin{equation}
-% \vector{J}
-% = \mu_0 \laplace{\ToroidalFlux} \grad{\zeta}
-% - \mu_0 I' \ab(\grad{\zeta} \times \grad{\ToroidalFlux})
+% \vec{J}
+% = \mu_0 \laplacian{\psi} \grad{\zeta}
+% - \mu_0 I' \ab(\grad{\zeta} \times \grad{\psi})
 % \end{equation}
 
 易证，此形式的电流密度自然满足平行于磁面的要求：
 \begin{equation}\begin{aligned}
-J^\rho &= \grad{\rho} \cdot \vector{J} \\
-&= \frac{1}{\mu_0} \grad{\rho} \cdot \ab[\curl{\ab(\grad{\zeta} \times \grad{\ToroidalFlux})}] \\
+J^\rho &= \grad{\rho} \cdot \vec{J} \\
+&= \frac{1}{\mu_0} \grad{\rho} \cdot \ab[\curl{\ab(\grad{\zeta} \times \grad{\psi})}] \\
 &= \frac{1}{\mu_0} \dive{\ab[
-    \ab(\grad{\zeta} \times \grad{\ToroidalFlux}) \times \grad{\rho}
+    \ab(\grad{\zeta} \times \grad{\psi}) \times \grad{\rho}
 ]} \\
 &= \frac{1}{\mu_0} \dive{\ab(
-    \contraMetric{\rho\zeta} \grad{\ToroidalFlux}
-    - \ToroidalFlux' \contraMetric{\rho\rho} \grad{\zeta}
+    \Metric^{\rho\zeta} \grad{\psi}
+    - \psi' \Metric^{\rho\rho} \grad{\zeta}
 )} \\
 &= - \frac{1}{\mu_0} \grad{\zeta} \cdot \grad{\ab(
-    \ToroidalFlux' \contraMetric{\rho\rho}
+    \psi' \Metric^{\rho\rho}
 )}
-- \frac{\ToroidalFlux' \contraMetric{\rho\rho}}{\mu_0} \laplace{\zeta} \\
+- \frac{\psi' \Metric^{\rho\rho}}{\mu_0} \laplacian{\zeta} \\
 &= 0
 \end{aligned}\end{equation}
 同时，极向分量和环向分量分别为
 \begin{equation}\begin{aligned}
-J^\theta &= \grad{\theta} \cdot \vector{J} \\
+J^\theta &= \grad{\theta} \cdot \vec{J} \\
 &= \frac{1}{\mu_0} \grad{\theta} \cdot \ab[
-    \curl{\ab(\grad{\zeta} \times \grad{\ToroidalFlux})}
+    \curl{\ab(\grad{\zeta} \times \grad{\psi})}
 ]
-- \frac{I'}{\mu_0} \grad{\theta} \cdot \ab(\grad{\zeta} \times \grad{\ToroidalFlux}) \\
+- \frac{I'}{\mu_0} \grad{\theta} \cdot \ab(\grad{\zeta} \times \grad{\psi}) \\
 &= \frac{1}{\mu_0} \dive{\ab[
-    \ab(\grad{\zeta} \times \grad{\ToroidalFlux}) \times \grad{\theta}
-]} - \frac{\ToroidalFlux' I'}{\mu_0 \Jacobian} \\
+    \ab(\grad{\zeta} \times \grad{\psi}) \times \grad{\theta}
+]} - \frac{\psi' I'}{\mu_0 \Jacobian} \\
 &= \frac{1}{\mu_0} \dive{\ab(
-    \contraMetric{\theta\zeta} \grad{\ToroidalFlux}
-    - \ToroidalFlux' \contraMetric{\rho\theta} \grad{\zeta}
-)} - \frac{\ToroidalFlux' I'}{\mu_0 \Jacobian} \\
-&=  - \frac{\ToroidalFlux' I'}{\mu_0 \Jacobian}
+    \Metric^{\theta\zeta} \grad{\psi}
+    - \psi' \Metric^{\rho\theta} \grad{\zeta}
+)} - \frac{\psi' I'}{\mu_0 \Jacobian} \\
+&=  - \frac{\psi' I'}{\mu_0 \Jacobian}
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}
-J^\zeta &= \grad{\zeta} \cdot \vector{J} \\
+J^\zeta &= \grad{\zeta} \cdot \vec{J} \\
 &= \frac{1}{\mu_0} \grad{\zeta}
-\cdot \ab[\curl{\ab(\grad{\zeta} \times \grad{\ToroidalFlux})}] \\
+\cdot \ab[\curl{\ab(\grad{\zeta} \times \grad{\psi})}] \\
 &= \frac{1}{\mu_0} \dive{\ab[
-    \ab(\grad{\zeta} \times \grad{\ToroidalFlux}) \times \grad{\zeta}
+    \ab(\grad{\zeta} \times \grad{\psi}) \times \grad{\zeta}
 ]} \\
 &= \frac{1}{\mu_0} \dive{\ab(
-    \contraMetric{\zeta\zeta} \grad{\ToroidalFlux}
-    - \ToroidalFlux' \contraMetric{\rho\zeta} \grad{\zeta}
+    \Metric^{\zeta\zeta} \grad{\psi}
+    - \psi' \Metric^{\rho\zeta} \grad{\zeta}
 )} \\
 &= \frac{1}{\mu_0} \dive{\ab(
-    \frac{1}{R^2} \grad{\ToroidalFlux}
+    \frac{1}{R^2} \grad{\psi}
 )}
 \end{aligned}\end{equation}
 则电流密度也可写成：
 \begin{equation}\begin{aligned}
-\vector{J} &= \Jacobian \ab(
+\vec{J} &= \Jacobian \ab(
     J^\theta \grad{\zeta} \times \grad{\rho}
     + J^\zeta \grad{\rho} \times \grad{\theta}
 ) \\
 &= \Jacobian J^\theta \grad{\zeta} \times \grad{\rho}
 + R^2 J^\zeta \grad{\zeta} \\
-&= \frac{\Jacobian}{\ToroidalFlux'} J^\theta \vector{B}
-+ \ab(R^2 J^\zeta - \frac{\Jacobian I}{\ToroidalFlux'} J^\theta) \grad{\zeta}
+&= \frac{\Jacobian}{\psi'} J^\theta \vec{B}
++ \ab(R^2 J^\zeta - \frac{\Jacobian I}{\psi'} J^\theta) \grad{\zeta}
 \end{aligned}\end{equation}
 
 则洛仑兹力
 \begin{equation}\begin{aligned}
-\vector{J} \times \vector{B}
-&= \ab(R^2 J^\zeta - \frac{\Jacobian I}{\ToroidalFlux'} J^\theta)
-\grad{\zeta} \times \vector{B} \\
-&= \ab(R^2 \ToroidalFlux' J^\zeta - \Jacobian I J^\theta)
+\vec{J} \times \vec{B}
+&= \ab(R^2 J^\zeta - \frac{\Jacobian I}{\psi'} J^\theta)
+\grad{\zeta} \times \vec{B} \\
+&= \ab(R^2 \psi' J^\zeta - \Jacobian I J^\theta)
 \grad{\zeta} \times \ab(\grad{\zeta} \times \grad{\rho}) \\
-&= \ab(\frac{\Jacobian I}{R^2} J^\theta - \ToroidalFlux' J^\zeta) \grad{\rho}
+&= \ab(\frac{\Jacobian I}{R^2} J^\theta - \psi' J^\zeta) \grad{\rho}
 \end{aligned}\end{equation}
 
-代入 $\vector{J} \times \vector{B} = \grad{p}$ 得
+代入 $\vec{J} \times \vec{B} = \grad{p}$ 得
 \begin{equation}
-\frac{\Jacobian I}{R^2} J^\theta - \ToroidalFlux' J^\zeta = p' \ToroidalFlux'
+\frac{\Jacobian I}{R^2} J^\theta - \psi' J^\zeta = p' \psi'
 \end{equation}
 化简得 Grad-Shafranov 方程
 \begin{equation}
-\mu_0 p' + \frac{I I'}{R^2} + \dive{\left( \frac{1}{R^2} \grad{\ToroidalFlux} \right)} = 0
+\mu_0 p' + \frac{I I'}{R^2} + \dive{\ab( \frac{1}{R^2} \grad{\psi} )} = 0
 \end{equation}
 
-只需要令 $\contraMetric{\rho\theta} = 0, \Jacobian = r R$，以及 $R$ 为常数，即可得到一维圆柱平衡方程。
+只需要令 $\Metric^{\rho\theta} = 0, \Jacobian = r R$，以及 $R$ 为常数，即可得到一维圆柱平衡方程。
 
 \subsection{G-S 方程的近轴展开}
 

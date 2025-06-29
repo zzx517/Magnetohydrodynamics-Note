@@ -5,12 +5,15 @@
 
 \subsection{动理论描述}
 
+相空间分布函数所满足的动理学方程：
 \begin{equation}
-    \Deriv{f_\alpha}{t} = \pDeriv{f_\alpha}{t} + \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} + \Deriv{\vector{v}}{t} \cdot \pDeriv{f_\alpha}{\vector{v}} = \left( \pDeriv{f_\alpha}{t} \right)_c
+    \mdv{f_\alpha}{t} = \pdv{f_\alpha}{t} + \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} + \frac{\vec{F}}{m} \cdot \pdv{f_\alpha}{\vec{v}} = \ab( \pdv{f_\alpha}{t} )_c
 \end{equation}
+其中，$\displaystyle\mdv{}{t} = \displaystyle\pdv{}{t} + \vec{u} \cdot \grad$ 为随流导数。
 
+在磁约束等离子体中，则有
 \begin{equation}
-    \pDeriv{f_\alpha}{t} + \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} + \frac{q_\alpha}{m_\alpha} \left( \vector{E} + \vector{v} \times \vector{B} \right) \cdot \pDeriv{f_\alpha}{\vector{v}} = \left( \pDeriv{f_\alpha}{t} \right)_c
+    \pdv{f_\alpha}{t} + \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} + \frac{q_\alpha}{m_\alpha} \ab( \vec{E} + \vec{v} \times \vec{B} ) \cdot \pdv{f_\alpha}{\vec{v}} = \ab( \pdv{f_\alpha}{t} )_c
 \end{equation}
 
 \subsection{矩方程}
@@ -18,404 +21,404 @@
 \subsubsection{连续性方程}
 
 \begin{equation}
-    \int \left[
-        \pDeriv{f_\alpha}{t} + \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} + \frac{q_\alpha}{m_\alpha} \left( \vector{E} + \vector{v} \times \vector{B} \right) \cdot \pDeriv{f_\alpha}{\vector{v}}
-    \right] \, \d^3 \vector{v}
-    = \int \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v}
+    \int \ab[
+        \pdv{f_\alpha}{t} + \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} + \frac{q_\alpha}{m_\alpha} \ab( \vec{E} + \vec{v} \times \vec{B} ) \cdot \pdv{f_\alpha}{\vec{v}}
+    ] \d^3 \vec{v}
+    = \int \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v}
 \end{equation}
 
 第一项
 \begin{equation}\begin{aligned}
-    \int \pDeriv{f_\alpha}{t} \, \d^3 \vector{v}
-    &= \pDeriv{}{t} \int f_\alpha \, \d^3 \vector{v} \\
-    &= \pDeriv{n_\alpha}{t}
+    \int \pdv{f_\alpha}{t} \d^3 \vec{v}
+    &= \pdv{}{t} \int f_\alpha \d^3 \vec{v} \\
+    &= \pdv{n_\alpha}{t}
 \end{aligned}\end{equation}
 
 第二项
 \begin{equation}\begin{aligned}
-    \int \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} \, \d^3 \vector{v}
-    &= \pDeriv{}{\vector{r}} \cdot \int f_\alpha \vector{v} \, \d^3 \vector{v} \\
-    &= \dive{(n_\alpha \vector{u}_\alpha)}
+    \int \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} \d^3 \vec{v}
+    &= \pdv{}{\vec{r}} \cdot \int f_\alpha \vec{v} \d^3 \vec{v} \\
+    &= \dive{(n_\alpha \vec{u}_\alpha)}
 \end{aligned}\end{equation}
 
 第三项
 \begin{equation}\begin{aligned}
-    \int \vector{E} \cdot \pDeriv{f_\alpha}{\vector{v}} \, \d^3 \vector{v}
-    &= \int \pDeriv{}{\vector{v}} \cdot (f_\alpha \vector{E}) \, \d^3 \vector{v} \\
-    &= \int_{S_{\vector{v}}} f_\alpha \vector{E} \cdot \d \vector{S}_{\vector{v}} \\
+    \int \vec{E} \cdot \pdv{f_\alpha}{\vec{v}} \d^3 \vec{v}
+    &= \int \pdv{}{\vec{v}} \cdot (f_\alpha \vec{E}) \d^3 \vec{v} \\
+    &= \int_{S_{\vec{v}}} f_\alpha \vec{E} \cdot \d \vec{S}_{\vec{v}} \\
     &= 0
 \end{aligned}\end{equation}
 及
 \begin{equation}\begin{aligned}
-    \int \vector{v} \times \vector{B} \cdot \pDeriv{f_\alpha}{\vector{v}} \, \d^3 \vector{v}
-    &= \int \pDeriv{}{\vector{v}} \cdot (f_\alpha \vector{v} \times \vector{B}) \, \d^3 \vector{v}
-    - \int f_\alpha \pDeriv{}{\vector{v}} \cdot (\vector{v} \times \vector{B}) \, \d^3 \vector{v} \\
-    &= \int_{S_{\vector{v}}} f_\alpha \vector{v} \times \vector{B} \cdot \d \vector{S}_{\vector{v}}
-    - \int f_\alpha \cdot 0 \, \d^3 \vector{v} \\
+    \int \vec{v} \times \vec{B} \cdot \pdv{f_\alpha}{\vec{v}} \d^3 \vec{v}
+    &= \int \pdv{}{\vec{v}} \cdot (f_\alpha \vec{v} \times \vec{B}) \d^3 \vec{v}
+    - \int f_\alpha \pdv{}{\vec{v}} \cdot (\vec{v} \times \vec{B}) \d^3 \vec{v} \\
+    &= \int_{S_{\vec{v}}} f_\alpha \vec{v} \times \vec{B} \cdot \d \vec{S}_{\vec{v}}
+    - \int f_\alpha \cdot 0 \d^3 \vec{v} \\
     &= 0
 \end{aligned}\end{equation}
 其中
 \begin{equation}
-    \pDeriv{}{\vector{v}} \cdot (\vector{v} \times \vector{B})
-    = \vector{B} \cdot \left( \pDeriv{}{\vector{v}} \times \vector{v} \right)
-    - \vector{v} \cdot \left( \pDeriv{}{\vector{v}} \times \vector{B} \right)
+    \pdv{}{\vec{v}} \cdot (\vec{v} \times \vec{B})
+    = \vec{B} \cdot \ab( \pdv{}{\vec{v}} \times \vec{v} )
+    - \vec{v} \cdot \ab( \pdv{}{\vec{v}} \times \vec{B} )
     = 0
 \end{equation}
 
 方程右边
 \begin{equation}
-    \int \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v} = \left( \pDeriv{n_\alpha}{t} \right)_c
+    \int \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v} = \ab( \pdv{n_\alpha}{t} )_c
 \end{equation}
 
 故
 \begin{equation}
-    \pDeriv{n_\alpha}{t} + \dive{(n_\alpha \vector{u}_\alpha)} = \left( \pDeriv{n_\alpha}{t} \right)_c
+    \pdv{n_\alpha}{t} + \dive{(n_\alpha \vec{u}_\alpha)} = \ab( \pdv{n_\alpha}{t} )_c
 \end{equation}
 
 忽略非弹性碰撞
 \begin{equation}\label{eq:Fluid_连续性方程}
-    \pDeriv{n_\alpha}{t} + \dive{(n_\alpha \vector{u}_\alpha)} = 0
+    \pdv{n_\alpha}{t} + \dive{(n_\alpha \vec{u}_\alpha)} = 0
 \end{equation}
 
 \subsubsection{动量方程}
 
 \begin{equation}
-    m_\alpha \int \vector{v} \left[
-        \pDeriv{f_\alpha}{t} + \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} + \frac{q_\alpha}{m_\alpha} \left( \vector{E} + \vector{v} \times \vector{B} \right) \cdot \pDeriv{f_\alpha}{\vector{v}}
-    \right] \, \d^3 \vector{v}
-    = m_\alpha \int \vector{v} \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v}
+    m_\alpha \int \vec{v} \ab[
+        \pdv{f_\alpha}{t} + \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} + \frac{q_\alpha}{m_\alpha} \ab( \vec{E} + \vec{v} \times \vec{B} ) \cdot \pdv{f_\alpha}{\vec{v}}
+    ] \d^3 \vec{v}
+    = m_\alpha \int \vec{v} \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v}
 \end{equation}
 
 左一
 \begin{equation}\begin{aligned}
-    m_\alpha \int \vector{v} \pDeriv{f_\alpha}{t} \, \d^3 \vector{v}
-    &= m_\alpha \pDeriv{}{t} \int \vector{v} f_\alpha \, \d^3 \vector{v} \\
-    &= m_\alpha \pDeriv{\left( n_\alpha \vector{u}_\alpha \right)}{t}
+    m_\alpha \int \vec{v} \pdv{f_\alpha}{t} \d^3 \vec{v}
+    &= m_\alpha \pdv{}{t} \int \vec{v} f_\alpha \d^3 \vec{v} \\
+    &= m_\alpha \pdv{\ab( n_\alpha \vec{u}_\alpha )}{t}
 \end{aligned}\end{equation}
 
 左二
 \begin{equation}\begin{aligned}
-    m_\alpha \int \vector{v} \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} \, \d^3 \vector{v}
-    &= \pDeriv{}{\vector{r}} \cdot \int m_\alpha \vector{v} \vector{v} f_\alpha \, \d^3 \vector{v} \\
-    &= \dive{\vector{P}_\alpha}
+    m_\alpha \int \vec{v} \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} \d^3 \vec{v}
+    &= \pdv{}{\vec{r}} \cdot \int m_\alpha \vec{v} \vec{v} f_\alpha \d^3 \vec{v} \\
+    &= \dive{\vec{P}_\alpha}
 \end{aligned}\end{equation}
 其中
 \begin{equation}
-    \vector{P}_\alpha = \int m_\alpha \vector{v} \vector{v} f_\alpha \, \d^3 \vector{v}
+    \vec{P}_\alpha = \int m_\alpha \vec{v} \vec{v} f_\alpha \d^3 \vec{v}
 \end{equation}
 叫做应力张量，也叫做动量通量。对比之下，压强张量的定义
 \begin{equation}
-    \vector{p}_\alpha = \int m_\alpha \vector{w}_\alpha \vector{w}_\alpha f_\alpha \, \d^3 \vector{v}
+    \vec{p}_\alpha = \int m_\alpha \vec{w}_\alpha \vec{w}_\alpha f_\alpha \d^3 \vec{v}
 \end{equation}
-其中 $\vector{w}_\alpha = \vector{v} - \vector{u}_\alpha$ 表示粒子的无规热运动速度，因此有
+其中 $\vec{w}_\alpha = \vec{v} - \vec{u}_\alpha$ 表示粒子的无规热运动速度，因此有
 \begin{equation}
-    \vector{P}_\alpha = \vector{p}_\alpha + m_\alpha n_\alpha \vector{u}_\alpha \vector{u}_\alpha
+    \vec{P}_\alpha = \vec{p}_\alpha + m_\alpha n_\alpha \vec{u}_\alpha \vec{u}_\alpha
 \end{equation}
 
 粒子的标量压强则可以由压强张量直接给出
 \begin{equation}
-    p_\alpha = \frac{1}{3} \Tr\ab(\vector{p}_\alpha)
-    = \frac{1}{3} \int m_\alpha \vector{w}_\alpha^2 f_\alpha \, \d^3 \vector{v}
+    p_\alpha = \frac{1}{3} \Tr\ab(\vec{p}_\alpha)
+    = \frac{1}{3} \int m_\alpha \vec{w}_\alpha^2 f_\alpha \d^3 \vec{v}
 \end{equation}
 压强张量也可以写成
 \begin{equation}
-    \vector{p}_\alpha = p_\alpha \vector{I} + \vector{\chi}_\alpha
+    \vec{p}_\alpha = p_\alpha \vec{I} + \vec{\chi}_\alpha
 \end{equation}
-其中，$\vector{\chi}_\alpha$ 为粘滞张量，代表了分布函数偏离球对称性的部分。
+其中，$\vec{\chi}_\alpha$ 为粘滞张量，代表了分布函数偏离球对称性的部分。
 
 左三
 \begin{equation}\begin{aligned}
 &q_\alpha \int
-    \vector{v} \left( \vector{E} + \vector{v} \times \vector{B} \right)
-    \cdot \pDeriv{f_\alpha}{\vector{v}}
-\, \d^3 \vector{v} \\
-& \quad = q_\alpha \int \pDeriv{}{\vector{v}} \cdot \left[
-    f_\alpha \left( \vector{E} + \vector{v} \times \vector{B} \right) \vector{v}
-\right] \, \d^3 \vector{v} \\
-& \quad \quad - q_\alpha \int f_\alpha \left[
-    \vector{v} \pDeriv{}{\vector{v}} \cdot \left( \vector{E} + \vector{v} \times \vector{B} \right)
-    + \left( \vector{E} + \vector{v} \times \vector{B} \right) \cdot \pDeriv{}{\vector{v}} \vector{v}
-\right] \, \d^3 \vector{v} \\
-& \quad = - q_\alpha \int f_\alpha \left( \vector{E} + \vector{v} \times \vector{B} \right) \, \d^3 \vector{v} \\
-& \quad = - q_\alpha n_\alpha \left( \vector{E} + \vector{u}_\alpha \times \vector{B} \right)
+    \vec{v} \ab( \vec{E} + \vec{v} \times \vec{B} )
+    \cdot \pdv{f_\alpha}{\vec{v}}
+\d^3 \vec{v} \\
+& \quad = q_\alpha \int \pdv{}{\vec{v}} \cdot \ab[
+    f_\alpha \ab( \vec{E} + \vec{v} \times \vec{B} ) \vec{v}
+] \d^3 \vec{v} \\
+& \quad \quad - q_\alpha \int f_\alpha \ab[
+    \vec{v} \pdv{}{\vec{v}} \cdot \ab( \vec{E} + \vec{v} \times \vec{B} )
+    + \ab( \vec{E} + \vec{v} \times \vec{B} ) \cdot \pdv{}{\vec{v}} \vec{v}
+] \d^3 \vec{v} \\
+& \quad = - q_\alpha \int f_\alpha \ab( \vec{E} + \vec{v} \times \vec{B} ) \d^3 \vec{v} \\
+& \quad = - q_\alpha n_\alpha \ab( \vec{E} + \vec{u}_\alpha \times \vec{B} )
 \end{aligned}\end{equation}
 
 定义摩擦力
 \begin{equation}
-    m_\alpha \int \vector{v} \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v}
-    = \vector{F}_{r,\alpha}
+    m_\alpha \int \vec{v} \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v}
+    = \vec{F}_{r,\alpha}
 \end{equation}
 代表的是其他种类粒子对 $\alpha$ 类粒子碰撞带来的动量。
 
 故
 \begin{equation}\label{eq:Fluid_动量方程}
-m_\alpha n_\alpha \left(
-    \pDeriv{\vector{u}_\alpha}{t} + \vector{u}_\alpha \cdot \grad{\vector{u}_\alpha}
-\right)
-= - \grad{p_\alpha} - \dive{\vector{\chi}_\alpha} + q_\alpha n_\alpha \left( \vector{E} + \vector{u}_\alpha \times \vector{B} \right) + \vector{F}_{r,\alpha}
+m_\alpha n_\alpha \ab(
+    \pdv{\vec{u}_\alpha}{t} + \vec{u}_\alpha \cdot \grad{\vec{u}_\alpha}
+)
+= - \grad{p_\alpha} - \dive{\vec{\chi}_\alpha} + q_\alpha n_\alpha \ab( \vec{E} + \vec{u}_\alpha \times \vec{B} ) + \vec{F}_{r,\alpha}
 \end{equation}
 
 \subsubsection{能量方程}
 
 \begin{equation}
-\int \frac{1}{2} m_\alpha \vector{v}^2 \left[
-    \pDeriv{f_\alpha}{t} + \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} + \frac{q_\alpha}{m_\alpha} \left( \vector{E} + \vector{v} \times \vector{B} \right) \cdot \pDeriv{f_\alpha}{\vector{v}}
-\right] \, \d^3 \vector{v}
-= \int \frac{1}{2} m_\alpha \vector{v}^2 \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v}
+\int \frac{1}{2} m_\alpha \vec{v}^2 \ab[
+    \pdv{f_\alpha}{t} + \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} + \frac{q_\alpha}{m_\alpha} \ab( \vec{E} + \vec{v} \times \vec{B} ) \cdot \pdv{f_\alpha}{\vec{v}}
+] \d^3 \vec{v}
+= \int \frac{1}{2} m_\alpha \vec{v}^2 \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v}
 \end{equation}
 
 左一
 \begin{equation}\begin{aligned}
-\int \frac{1}{2} m_\alpha \vector{v}^2 \pDeriv{f_\alpha}{t} \, \d^3 \vector{v}
-&= \pDeriv{}{t} \int \frac{1}{2} m_\alpha \left(
-    \vector{w}_\alpha^2 + 2 \vector{w}_\alpha \cdot \vector{u}_\alpha + \vector{u}_\alpha^2
-\right) f_\alpha \, \d^3 \vector{v} \\
-&= \pDeriv{}{t} \left(
-    \frac{3}{2} p_\alpha + \frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2
-\right)
+\int \frac{1}{2} m_\alpha \vec{v}^2 \pdv{f_\alpha}{t} \d^3 \vec{v}
+&= \pdv{}{t} \int \frac{1}{2} m_\alpha \ab(
+    \vec{w}_\alpha^2 + 2 \vec{w}_\alpha \cdot \vec{u}_\alpha + \vec{u}_\alpha^2
+) f_\alpha \d^3 \vec{v} \\
+&= \pdv{}{t} \ab(
+    \frac{3}{2} p_\alpha + \frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2
+)
 \end{aligned}\end{equation}
 
 定义能流密度
 \begin{equation}
-\vector{Q}_\alpha = \int \frac{1}{2} m_\alpha \vector{v}^2 \vector{v} f_\alpha \, \d^3 \vector{v}
+\vec{Q}_\alpha = \int \frac{1}{2} m_\alpha \vec{v}^2 \vec{v} f_\alpha \d^3 \vec{v}
 \end{equation}
 热流密度
 \begin{equation}
-\vector{q}_\alpha = \int \frac{1}{2} m_\alpha \vector{w}_\alpha^2 \vector{w}_\alpha f_\alpha \, \d^3 \vector{v}
+\vec{q}_\alpha = \int \frac{1}{2} m_\alpha \vec{w}_\alpha^2 \vec{w}_\alpha f_\alpha \d^3 \vec{v}
 \end{equation}
 二者之间的变换关系
 \begin{equation}
-\vector{Q}_\alpha = \vector{q}_\alpha + \vector{u}_\alpha \cdot \vector{p}_\alpha
-+ \frac{3}{2} p_\alpha \vector{u}_\alpha + \frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2 \vector{u}_\alpha
+\vec{Q}_\alpha = \vec{q}_\alpha + \vec{u}_\alpha \cdot \vec{p}_\alpha
++ \frac{3}{2} p_\alpha \vec{u}_\alpha + \frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2 \vec{u}_\alpha
 \end{equation}
 则左二为
 \begin{equation}\begin{aligned}
-\int \frac{1}{2} m_\alpha \vector{v}^2 \vector{v} \cdot \pDeriv{f_\alpha}{\vector{r}} \, \d^3 \vector{v}
-&= \dive{\vector{Q}_\alpha} \\
-&= \dive{\vector{q}_\alpha} + \dive{(\vector{u}_\alpha \cdot \vector{p}_\alpha)}
-+ \dive{\left[\left(\frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2 + \frac{3}{2} p_\alpha \right) \vector{u}_\alpha\right]}
+\int \frac{1}{2} m_\alpha \vec{v}^2 \vec{v} \cdot \pdv{f_\alpha}{\vec{r}} \d^3 \vec{v}
+&= \dive{\vec{Q}_\alpha} \\
+&= \dive{\vec{q}_\alpha} + \dive{(\vec{u}_\alpha \cdot \vec{p}_\alpha)}
++ \dive{\ab[\ab(\frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2 + \frac{3}{2} p_\alpha ) \vec{u}_\alpha]}
 \end{aligned}\end{equation}
 
 左三
 \begin{equation}\begin{aligned}
-&\int \frac{1}{2} q_\alpha \vector{v}^2 \left( \vector{E} + \vector{v} \times \vector{B} \right) \cdot \pDeriv{f_\alpha}{\vector{v}} \, \d^3 \vector{v} \\
-& \quad = \frac{1}{2} q_\alpha \int \pDeriv{}{\vector{v}} \cdot \left[
-    f_\alpha \vector{v}^2 \left( \vector{E} + \vector{v} \times \vector{B} \right)
-\right] \, \d^3 \vector{v} \\
-&  \quad\quad - \frac{1}{2} q_\alpha \int f_\alpha \pDeriv{}{\vector{v}} \cdot \left[
-    \vector{v}^2 \left( \vector{E} + \vector{v} \times \vector{B} \right)
-\right] \, \d^3 \vector{v} \\
-& \quad = - \frac{1}{2} q_\alpha \int f_\alpha \left[
-    2 \vector{v} \cdot \left( \vector{E} + \vector{v} \times \vector{B} \right)
-    + \vector{v}^2 \pDeriv{}{\vector{v}} \cdot \left( \vector{E} + \vector{v} \times \vector{B} \right)
-\right] \, \d^3 \vector{v} \\
-& \quad = - q_\alpha \int f_\alpha \vector{v} \cdot \vector{E} \, \d^3 \vector{v} \\
-& \quad = - q_\alpha n_\alpha \vector{u}_\alpha \cdot \vector{E}
+&\int \frac{1}{2} q_\alpha \vec{v}^2 \ab( \vec{E} + \vec{v} \times \vec{B} ) \cdot \pdv{f_\alpha}{\vec{v}} \d^3 \vec{v} \\
+& \quad = \frac{1}{2} q_\alpha \int \pdv{}{\vec{v}} \cdot \ab[
+    f_\alpha \vec{v}^2 \ab( \vec{E} + \vec{v} \times \vec{B} )
+] \d^3 \vec{v} \\
+&  \quad\quad - \frac{1}{2} q_\alpha \int f_\alpha \pdv{}{\vec{v}} \cdot \ab[
+    \vec{v}^2 \ab( \vec{E} + \vec{v} \times \vec{B} )
+] \d^3 \vec{v} \\
+& \quad = - \frac{1}{2} q_\alpha \int f_\alpha \ab[
+    2 \vec{v} \cdot \ab( \vec{E} + \vec{v} \times \vec{B} )
+    + \vec{v}^2 \pdv{}{\vec{v}} \cdot \ab( \vec{E} + \vec{v} \times \vec{B} )
+] \d^3 \vec{v} \\
+& \quad = - q_\alpha \int f_\alpha \vec{v} \cdot \vec{E} \d^3 \vec{v} \\
+& \quad = - q_\alpha n_\alpha \vec{u}_\alpha \cdot \vec{E}
 \end{aligned}\end{equation}
 
 定义能量交换率或者是热量输运率密度
 \begin{equation}
-W_\alpha = \int \frac{1}{2} m_\alpha \vector{w}_\alpha^2 \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v}
+W_\alpha = \int \frac{1}{2} m_\alpha \vec{w}_\alpha^2 \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v}
 \end{equation}
 其代表了 $\alpha$ 类粒子与其他类粒子的热碰撞获得的热量。
 则右一
 \begin{equation}\begin{aligned}
-\int \frac{1}{2} m_\alpha \vector{v}^2 \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v}
-&= \int \frac{1}{2} m_\alpha \vector{w}_\alpha^2 \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v} \\
-& \quad + \vector{u}_\alpha \cdot \int m_\alpha \vector{v} \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v} \\
-& \quad - \frac{1}{2} m_\alpha \vector{u}_\alpha^2 \int \left( \pDeriv{f_\alpha}{t} \right)_c \, \d^3 \vector{v} \\
-&= W_\alpha + \vector{u}_\alpha \cdot \vector{F}_{r,\alpha}
+\int \frac{1}{2} m_\alpha \vec{v}^2 \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v}
+&= \int \frac{1}{2} m_\alpha \vec{w}_\alpha^2 \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v} \\
+& \quad + \vec{u}_\alpha \cdot \int m_\alpha \vec{v} \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v} \\
+& \quad - \frac{1}{2} m_\alpha \vec{u}_\alpha^2 \int \ab( \pdv{f_\alpha}{t} )_c \d^3 \vec{v} \\
+&= W_\alpha + \vec{u}_\alpha \cdot \vec{F}_{r,\alpha}
 \end{aligned}\end{equation}
 
 故
 \begin{equation}\begin{aligned}\label{eq:Fluid_能量方程}
-& \pDeriv{}{t} \left(
-    \frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2 + \frac{3}{2} p_\alpha
-\right)
-+ \dive{\left[
-    \left(\frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2
-    + \frac{5}{2} p_\alpha \right) \vector{u}_\alpha
-\right]} \\
-& \quad = q_\alpha n_\alpha \vector{u}_\alpha \cdot \vector{E}
-- \dive{\vector{q}_\alpha}
-- \dive{(\vector{\chi}_\alpha \cdot \vector{u}_\alpha)}
-+ W_\alpha + \vector{u}_\alpha \cdot \vector{F}_{r,\alpha}
+& \pdv{}{t} \ab(
+    \frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2 + \frac{3}{2} p_\alpha
+)
++ \dive{\ab[
+    \ab(\frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2
+    + \frac{5}{2} p_\alpha ) \vec{u}_\alpha
+]} \\
+& \quad = q_\alpha n_\alpha \vec{u}_\alpha \cdot \vec{E}
+- \dive{\vec{q}_\alpha}
+- \dive{(\vec{\chi}_\alpha \cdot \vec{u}_\alpha)}
++ W_\alpha + \vec{u}_\alpha \cdot \vec{F}_{r,\alpha}
 \end{aligned}\end{equation}
 
 \subsubsection{双流体方程组}
 
 连续方程 \ref{eq:Fluid_连续性方程}、动量方程 \ref{eq:Fluid_动量方程} 和能量方程 \ref{eq:Fluid_能量方程} 就构成了标准的双（多）流体方程组
 \begin{gather}
-\pDeriv{n_\alpha}{t} + \dive{(n_\alpha \vector{u}_\alpha)} = 0
+\pdv{n_\alpha}{t} + \dive{(n_\alpha \vec{u}_\alpha)} = 0
 \tag{\ref{eq:Fluid_连续性方程}} \\
-m_\alpha n_\alpha \left(
-    \pDeriv{\vector{u}_\alpha}{t} + \vector{u}_\alpha \cdot \grad{\vector{u}_\alpha}
-\right)
-= - \grad{p_\alpha} - \dive{\vector{\chi}_\alpha} + q_\alpha n_\alpha \left( \vector{E} + \vector{u}_\alpha \times \vector{B} \right) + \vector{F}_{r,\alpha}
+m_\alpha n_\alpha \ab(
+    \pdv{\vec{u}_\alpha}{t} + \vec{u}_\alpha \cdot \grad{\vec{u}_\alpha}
+)
+= - \grad{p_\alpha} - \dive{\vec{\chi}_\alpha} + q_\alpha n_\alpha \ab( \vec{E} + \vec{u}_\alpha \times \vec{B} ) + \vec{F}_{r,\alpha}
 \tag{\ref{eq:Fluid_动量方程}} \\
 \begin{aligned}
-& \pDeriv{}{t} \left(
-    \frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2 + \frac{3}{2} p_\alpha
-\right)
-+ \dive{\left[
-    \left(\frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2
-    + \frac{5}{2} p_\alpha \right) \vector{u}_\alpha
-\right]} \\
-& \quad = q_\alpha n_\alpha \vector{u}_\alpha \cdot \vector{E}
-- \dive{\vector{q}_\alpha}
-- \dive{(\vector{\chi}_\alpha \cdot \vector{u}_\alpha)}
-+ W_\alpha + \vector{u}_\alpha \cdot \vector{F}_{r,\alpha}
+& \pdv{}{t} \ab(
+    \frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2 + \frac{3}{2} p_\alpha
+)
++ \dive{\ab[
+    \ab(\frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2
+    + \frac{5}{2} p_\alpha ) \vec{u}_\alpha
+]} \\
+& \quad = q_\alpha n_\alpha \vec{u}_\alpha \cdot \vec{E}
+- \dive{\vec{q}_\alpha}
+- \dive{(\vec{\chi}_\alpha \cdot \vec{u}_\alpha)}
++ W_\alpha + \vec{u}_\alpha \cdot \vec{F}_{r,\alpha}
 \end{aligned}
 \tag{\ref{eq:Fluid_能量方程}}
 \end{gather}
-其中，未知数为粒子的密度 $n_\alpha$、压强 $p_\alpha$ 和流速 $\vector{u}_\alpha$。
-而粘滞张量 $\vector{\chi}_\alpha$、热流 $\vector{q}_\alpha$、碰撞摩擦力 $\vector{F}_{r,\alpha}$、热量输运率密度 $W_\alpha$ 与未知数之间的关系需要预先指定。
+其中，未知数为粒子的密度 $n_\alpha$、压强 $p_\alpha$ 和流速 $\vec{u}_\alpha$。
+而粘滞张量 $\vec{\chi}_\alpha$、热流 $\vec{q}_\alpha$、碰撞摩擦力 $\vec{F}_{r,\alpha}$、热量输运率密度 $W_\alpha$ 与未知数之间的关系需要预先指定。
 
 \subsection{从双流体方程组到磁流体力学方程组}
 
 现在，我们考虑等离子体成分只有电子和离子两种。将离子版本和电子版本的连续性方程加起来，得到
 \begin{equation}
-\pDeriv{\rho}{t} + \dive{\left(\rho \vector{u}\right)} = 0
+\pdv{\rho}{t} + \dive{\ab(\rho \vec{u})} = 0
 \end{equation}
 其中，由于准中性条件 $n_e \approx n_i \approx n$，及 $m_i \gg m_e$，有
 \begin{align}
 \rho &= m_e n_e + m_i n_i \approx m_i n \\
-\vector{u} &= \frac{1}{\rho} \left( m_e n_e \vector{u}_e + m_i n_i \vector{u}_i \right)
-\approx \vector{u}_i
+\vec{u} &= \frac{1}{\rho} \ab( m_e n_e \vec{u}_e + m_i n_i \vec{u}_i )
+\approx \vec{u}_i
 \end{align}
 上述流体速度代表了质心的运动速度。由于离子质量远大于电子，单流体是集中考虑离子惯性效应的，电子惯性基本可以忽略。因此在离子尺度上的运动，电子都可以快速效应，使得等离子体整体保持电中性。当然，仍然存在小尺度和小量的电荷分离，这很小的电荷分离也能产生较为显著的电场，同时并不需要泊松方程来封闭系统。
 
 将的离子版本和电子版本的动量方程加起来，忽略电子的惯性项，得到
 \begin{equation}
-\rho \Deriv{\vector{u}}{t} = \vector{J} \times \vector{B} - \dive{\vector{p}_\alpha}
+\rho \mdv{\vec{u}}{t} = \vec{J} \times \vec{B} - \dive{\vec{p}_\alpha}
 \end{equation}
 其中，等离子体的压强张量
 \begin{equation}
-    \vector{p} = \sum_\alpha \vector{p}_\alpha
+    \vec{p} = \sum_\alpha \vec{p}_\alpha
 \end{equation}
 等离子体电流密度
 \begin{equation}
-    \vector{J} = \sum_\alpha q_\alpha n_\alpha \vector{u}_\alpha
+    \vec{J} = \sum_\alpha q_\alpha n_\alpha \vec{u}_\alpha
 \end{equation}
 弹性碰撞摩擦力满足动量守恒
 \begin{equation}
-    \sum_\alpha \vector{F}_{r,\alpha} = 0
+    \sum_\alpha \vec{F}_{r,\alpha} = 0
 \end{equation}
 由于准中性，电场项可以忽略
 \begin{equation}
-    \left( \sum_\alpha q_\alpha n_\alpha \right) \vector{E} \approx 0 \cdot \vector{E} = 0
+    \ab( \sum_\alpha q_\alpha n_\alpha ) \vec{E} \approx 0 \cdot \vec{E} = 0
 \end{equation}
 
 将的离子版本和电子版本的能量方程加起来，得到
 \begin{equation}
-\pDeriv{}{t} \left(
-    \frac{1}{2} \rho \vector{u}^2 + \frac{3}{2} p
-\right)
-+ \dive{\left[\left(\frac{1}{2} \rho \vector{u}^2 + \frac{5}{2} p \right) \vector{u} \right]}
-= \vector{J} \cdot \vector{E}
-- \dive{\vector{q}} - \dive{(\vector{\chi} \cdot \vector{u})}
+\pdv{}{t} \ab(
+    \frac{1}{2} \rho \vec{u}^2 + \frac{3}{2} p
+)
++ \dive{\ab[\ab(\frac{1}{2} \rho \vec{u}^2 + \frac{5}{2} p ) \vec{u} ]}
+= \vec{J} \cdot \vec{E}
+- \dive{\vec{q}} - \dive{(\vec{\chi} \cdot \vec{u})}
 \end{equation}
 其中
 \begin{align}
-\frac{1}{2} \rho \vector{u}^2 &= \sum_\alpha \frac{1}{2} m_\alpha n_\alpha \vector{u}_\alpha^2 \\
-\vector{q} &= \sum_\alpha \vector{q}_\alpha \\
-\vector{u} \cdot \vector{p} &= \sum_\alpha \vector{u}_\alpha \cdot \vector{p}_\alpha
+\frac{1}{2} \rho \vec{u}^2 &= \sum_\alpha \frac{1}{2} m_\alpha n_\alpha \vec{u}_\alpha^2 \\
+\vec{q} &= \sum_\alpha \vec{q}_\alpha \\
+\vec{u} \cdot \vec{p} &= \sum_\alpha \vec{u}_\alpha \cdot \vec{p}_\alpha
 \end{align}
 并且由于弹性碰撞的能量守恒，因此碰撞引起的系统整体的热量输运可以忽略。
 
 接下来考虑电子的动量方程，忽略电子惯性项，可得
 \begin{equation}
-\vector{E} + \vector{u} \times \vector{B} - \frac{\vector{J} \times \vector{B}}{e n} + \frac{\grad{p}}{2 e n} - \frac{\vector{F}_{r,e}}{e n} = 0
+\vec{E} + \vec{u} \times \vec{B} - \frac{\vec{J} \times \vec{B}}{e n} + \frac{\grad{p}}{2 e n} - \frac{\vec{F}_{r,e}}{e n} = 0
 \end{equation}
 其中，电子流速
 \begin{equation}
-\vector{u}_i = \frac{n_i}{n_e}\vector{u}_i - \frac{1}{e n_e} \vector{J} \approx \vector{u} - \frac{1}{e n} \vector{J}
+\vec{u}_i = \frac{n_i}{n_e}\vec{u}_i - \frac{1}{e n_e} \vec{J} \approx \vec{u} - \frac{1}{e n} \vec{J}
 \end{equation}
 电子压强
 \begin{equation}
     p_e \approx p_i \approx \frac{p}{2}
 \end{equation}
 
-摩擦力 $\vector{F}_{r,e}$ 代表了离子-电子间的弹性碰撞导致的电子动量损失。通过引入电子-离子平均碰撞频率 $\nu_{ei}$，我们可以将摩擦力写成如下形式
+摩擦力 $\vec{F}_{r,e}$ 代表了离子-电子间的弹性碰撞导致的电子动量损失。通过引入电子-离子平均碰撞频率 $\nu_{ei}$，我们可以将摩擦力写成如下形式
 \begin{equation}
-\vector{F}_{r,e} = \nu_{ie} n \frac{m_e m_i}{m_e + m_i}
-\left( \vector{u}_i - \vector{u}_e \right)
-\approx e n \eta \vector{J}
+\vec{F}_{r,e} = \nu_{ie} n \frac{m_e m_i}{m_e + m_i}
+\ab( \vec{u}_i - \vec{u}_e )
+\approx e n \eta \vec{J}
 \end{equation}
 其中，$\eta = \dfrac{\nu_{ie} m_e}{e^2 n}$ 为等离子体的电阻率。则电子的动量方程改写为
 \begin{equation}
-\vector{E} + \vector{u} \times \vector{B} - \frac{\vector{J} \times \vector{B}}{e n} + \frac{\grad{p}}{2 e n} - \eta \vector{J} = 0
+\vec{E} + \vec{u} \times \vec{B} - \frac{\vec{J} \times \vec{B}}{e n} + \frac{\grad{p}}{2 e n} - \eta \vec{J} = 0
 \end{equation}
 上式即是广义欧姆定律。第两项代表洛仑兹力，第三项表示霍尔效应，第四项是压强梯度，第五项是电阻效应。
 
 接下来我们需要结合麦克斯韦方程组来估计广义欧姆定律中各项的量级。设场的空间特征长度为 $L$，时间特征尺度为 $T = \omega^{-1}$，则
 \begin{subequations}\begin{align}
-1 = \frac{|\curl{\vector{E}}|}{|\pderiv{\vector{B}}{t}|} &\sim \frac{E T}{B L} \sim \frac{E}{U B} \\
-\frac{|\vector{u} \times \vector{B}|}{|\vector{E}|} &\sim \frac{u}{U} \\
-\frac{|\vector{J} \times \vector{B}|}{e n |\vector{E}|} &\sim \frac{B^2}{\mu_0 L e n E} \sim \frac{\omega \omega_{ce}}{\omega_{pe}^2} \left(\frac{c}{U}\right)^2 \\
-\frac{|\grad{p}|}{e n E} &\sim \frac{p}{L e n U B} = \frac{\omega}{\omega_{ci}} \left(\frac{c_s}{U}\right)^2
+1 = \frac{|\curl{\vec{E}}|}{|\pdv{\vec{B}}{t}|} &\sim \frac{E T}{B L} \sim \frac{E}{U B} \\
+\frac{|\vec{u} \times \vec{B}|}{|\vec{E}|} &\sim \frac{u}{U} \\
+\frac{|\vec{J} \times \vec{B}|}{e n |\vec{E}|} &\sim \frac{B^2}{\mu_0 L e n E} \sim \frac{\omega \omega_{ce}}{\omega_{pe}^2} \ab(\frac{c}{U})^2 \\
+\frac{|\grad{p}|}{e n E} &\sim \frac{p}{L e n U B} = \frac{\omega}{\omega_{ci}} \ab(\frac{c_s}{U})^2
 \end{align}\end{subequations}
 其中，$\omega_{pe} = \sqrt{\dfrac{e^2 n}{\varepsilon_0 m_e}}$ 为电子等离子体频率，$\omega_{c\alpha} = \dfrac{e B}{m_\alpha}$ 为电子/离子的回旋频率，$c_s = \sqrt{\dfrac{p}{n m_i}}$ 为离子声速。当等离子体流速 $u \sim U$ 时，电场项与洛伦兹力处于同一量级。当等离子体的频率很小时（$\omega \ll \omega_{pe}, \omega \ll \omega_{ci}$），霍尔效应和压强梯度项可以忽略。
 
 考虑麦克斯韦方程组
 \begin{subequations}\begin{align}
-\dive{\vector{E}} &= \sum_\alpha q_\alpha n_\alpha \label{eq:电场泊松方程}\\
-\curl{\vector{E}} &= - \pDeriv{\vector{B}}{t} \\
-\dive{\vector{B}} &= 0 \\
-\curl{\vector{B}} &= \mu_0 \vector{J} + \varepsilon_0 \mu_0 \pDeriv{\vector{E}}{t} \label{eq:磁场环路定理}
+\dive{\vec{E}} &= \sum_\alpha q_\alpha n_\alpha \label{eq:电场泊松方程}\\
+\curl{\vec{E}} &= - \pdv{\vec{B}}{t} \\
+\dive{\vec{B}} &= 0 \\
+\curl{\vec{B}} &= \mu_0 \vec{J} + \varepsilon_0 \mu_0 \pdv{\vec{E}}{t} \label{eq:磁场环路定理}
 \end{align}\end{subequations}
-其中，由于准中性，电场泊松方程 \ref{eq:电场泊松方程} 可以忽略。磁场环路定理 \ref{eq:磁场环路定理} 中 $\varepsilon_0 \mu_0 \pDeriv{\vector{E}}{t}$ 在不考虑高频电磁波的时候可以忽略。
+其中，由于准中性，电场泊松方程 \ref{eq:电场泊松方程} 可以忽略。磁场环路定理 \ref{eq:磁场环路定理} 中 $\varepsilon_0 \mu_0 \pdv{\vec{E}}{t}$ 在不考虑高频电磁波的时候可以忽略。
 
 故，磁流体力学方程组
 \begin{subequations}\begin{align}
-\pDeriv{\rho}{t} + \dive{\left(\rho \vector{u}\right)} &= 0 \\
-\rho \Deriv{\vector{u}}{t} &= \vector{J} \times \vector{B} - \dive{\vector{p}_\alpha} \\
-\pDeriv{}{t} \left(
-    \frac{1}{2} \rho \vector{u}^2 + \frac{3}{2} p
-\right)
-+ \dive{\left[\left(\frac{1}{2} \rho \vector{u}^2 + \frac{5}{2} p \right) \vector{u} \right]}
-&= \vector{J} \cdot \vector{E}
-- \dive{\vector{q}} - \dive{(\vector{\chi} \cdot \vector{u})} \\
-\vector{E} + \vector{u} \times \vector{B} &= \eta \vector{J} \\
-\curl{\vector{E}} &= - \pDeriv{\vector{B}}{t} \\
-\dive{\vector{B}} &= 0 \\
-\curl{\vector{B}} &= \mu_0 \vector{J} \label{eq:02MHD_欧姆}
+\pdv{\rho}{t} + \dive{\ab(\rho \vec{u})} &= 0 \\
+\rho \mdv{\vec{u}}{t} &= \vec{J} \times \vec{B} - \dive{\vec{p}_\alpha} \\
+\pdv{}{t} \ab(
+    \frac{1}{2} \rho \vec{u}^2 + \frac{3}{2} p
+)
++ \dive{\ab[\ab(\frac{1}{2} \rho \vec{u}^2 + \frac{5}{2} p ) \vec{u} ]}
+&= \vec{J} \cdot \vec{E}
+- \dive{\vec{q}} - \dive{(\vec{\chi} \cdot \vec{u})} \\
+\vec{E} + \vec{u} \times \vec{B} &= \eta \vec{J} \\
+\curl{\vec{E}} &= - \pdv{\vec{B}}{t} \\
+\dive{\vec{B}} &= 0 \\
+\curl{\vec{B}} &= \mu_0 \vec{J} \label{eq:02MHD_欧姆}
 \end{align}\end{subequations}
 
 \subsection{理想磁流体力学方程组}
 
 首先忽略等离子体的粘滞张量
 \begin{equation}
-\vector{p} = p \vector{I}
+\vec{p} = p \vec{I}
 \end{equation}
 
 其次，在磁流体的 \textbf{低频} 近似下或者 \textbf{低碰撞} 条件下，可以忽略电阻效应。
-进一步，不考虑热流函数 $\vector{q}$。
+进一步，不考虑热流函数 $\vec{q}$。
 则动量方程、能量方程、广义欧姆定律简化为
 \begin{gather}
-\rho \Deriv{\vector{u}}{t} = \vector{J} \times \vector{B} - \grad{p} \\
-\pDeriv{}{t} \left(
-    \frac{1}{2} \rho \vector{u}^2 + \frac{3}{2} p
-\right)
-+ \dive{\left[\left(\frac{1}{2} \rho \vector{u}^2 + \frac{5}{2} \, p \right) \vector{u} \right]}
-= \vector{J} \cdot \vector{E} \\
-\vector{E} + \vector{u} \times \vector{B} = 0
+\rho \mdv{\vec{u}}{t} = \vec{J} \times \vec{B} - \grad{p} \\
+\pdv{}{t} \ab(
+    \frac{1}{2} \rho \vec{u}^2 + \frac{3}{2} p
+)
++ \dive{\ab[\ab(\frac{1}{2} \rho \vec{u}^2 + \frac{5}{2} p ) \vec{u} ]}
+= \vec{J} \cdot \vec{E} \\
+\vec{E} + \vec{u} \times \vec{B} = 0
 \end{gather}
 
 最后，利用热力学的一些定律之后，能量方程可以改写成如下形式
 \begin{equation}
-\Deriv{}{t} \left(\frac{p}{\rho^\gamma}\right) = 0 \tag{\ref{eq:IdealMHD_状态}}
+\mdv{}{t} \ab(\frac{p}{\rho^\gamma}) = 0 \tag{\ref{eq:IdealMHD_状态}}
 \end{equation}
 
 理想磁流体力学方程组
 \begin{subequations}\begin{align}
-\pDeriv{\rho}{t} + \dive{\left(\rho \vector{u}\right)} &= 0 \label{eq:IdealMHD_质量}\\
-\rho \Deriv{\vector{u}}{t} &= \vector{J} \times \vector{B} - \grad{p} \label{eq:IdealMHD_动量}\\
-\Deriv{}{t} \left(\frac{p}{\rho^\gamma}\right) &= 0 \label{eq:IdealMHD_状态}\\
-\vector{E} + \vector{u} \times \vector{B} &= 0 \label{eq:IdealMHD_欧姆}\\
-\curl{\vector{E}} &= - \pDeriv{\vector{B}}{t} \label{eq:IdealMHD_电场}\\
-\dive{\vector{B}} &= 0 \label{eq:IdealMHD_磁场}\\
-\curl{\vector{B}} &= \mu_0 \vector{J} \label{eq:IdealMHD_电流}
+\pdv{\rho}{t} + \dive{\ab(\rho \vec{u})} &= 0 \label{eq:IdealMHD_质量}\\
+\rho \mdv{\vec{u}}{t} &= \vec{J} \times \vec{B} - \grad{p} \label{eq:IdealMHD_动量}\\
+\mdv{}{t} \ab(\frac{p}{\rho^\gamma}) &= 0 \label{eq:IdealMHD_状态}\\
+\vec{E} + \vec{u} \times \vec{B} &= 0 \label{eq:IdealMHD_欧姆}\\
+\curl{\vec{E}} &= - \pdv{\vec{B}}{t} \label{eq:IdealMHD_电场}\\
+\dive{\vec{B}} &= 0 \label{eq:IdealMHD_磁场}\\
+\curl{\vec{B}} &= \mu_0 \vec{J} \label{eq:IdealMHD_电流}
 \end{align}\end{subequations}
 
 \section{磁流体力学方程组的局限与适用范围}
@@ -436,8 +439,8 @@ T = \omega^{-1} \gg \nu_c^{-1}
 为了使流体元的速度能表征流体元中的绝大多数粒子的速度，
 粒子的速度分布函数需要处于热力学平衡态 也即麦克斯韦分布。
 \begin{equation}
-f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
-\exp{\left(-\frac{m \vector{v}^2}{2 k T}\right)}
+f(\vec{v}) = \ab(\frac{m}{2 \pi k T})^{3/2}
+\exp{\ab(-\frac{m \vec{v}^2}{2 k T})}
 \end{equation}
 
 \subsection{磁流体的特性}
@@ -457,7 +460,7 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
 \end{equation}
 也即电子与离子的速度不能相差太大
 \begin{equation}
-    \vector{u}_e \approx \vector{u}_i
+    \vec{u}_e \approx \vec{u}_i
 \end{equation}
 但也允许少量的差距，对于自洽的电场和电流密度。
 
@@ -477,21 +480,21 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
 
 洛伦兹力可以写成
 \begin{equation}\begin{aligned}
-    \vector{J} \times \vector{B} &= - \dive{\left(
-    \frac{\vector{B}^2}{2 \mu_0} \vector{I} - \frac{\vector{B}\vector{B}}{\mu_0}
-\right)} \\
-&= \dive{\left(\frac{\vector{B}\vector{B}}{\mu_0}\right)}
-- \grad{\left(\frac{\vector{B}^2}{2 \mu_0}\right)} \\
-&= \frac{1}{\mu_0} B^2 \vector{\kappa}_B
-- \frac{1}{2 \mu_0} \nabla_\perp \vector{B}^2
+    \vec{J} \times \vec{B} &= - \dive{\ab(
+    \frac{\vec{B}^2}{2 \mu_0} \vec{I} - \frac{\vec{B}\vec{B}}{\mu_0}
+)} \\
+&= \dive{\ab(\frac{\vec{B}\vec{B}}{\mu_0})}
+- \grad{\ab(\frac{\vec{B}^2}{2 \mu_0})} \\
+&= \frac{1}{\mu_0} B^2 \vec{\kappa}_B
+- \frac{1}{2 \mu_0} \nabla_\perp \vec{B}^2
 \end{aligned}\end{equation}
 其中
 \begin{equation}
-\nabla_\perp = \nabla - \hat{\vector{b}} \hat{\vector{b}} \cdot \nabla
+\nabla_\perp = \nabla - \hat{\vec{b}} \hat{\vec{b}} \cdot \nabla
 \end{equation}
 为垂直磁场方向上的梯度。
 \begin{equation}
-\vector{\kappa}_B = \hat{\vector{b}} \cdot \grad{\hat{\vector{b}}}
+\vec{\kappa}_B = \hat{\vec{b}} \cdot \grad{\hat{\vec{b}}}
 \end{equation}
 为磁力线的曲率。
 
@@ -499,90 +502,90 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
 
 连续性方程等价于守恒方程：
 \begin{equation}
-    \pDeriv{\rho}{t} + \dive{\left(\rho \vector{u}\right)} = 0
-\iff\Deriv{}{t} \int_V \rho \, \d V = 0
+    \pdv{\rho}{t} + \dive{\ab(\rho \vec{u})} = 0
+\iff\mdv{}{t} \int_V \rho \d V = 0
 \end{equation}
 
 \subsection{动量守恒}
 
 动量方程可以写成
 \begin{equation}
-\pDeriv{\rho \vector{u}}{t} + \dive{\left[
-    \left(p + \frac{\vector{B}^2}{2 \mu_0}\right) \vector{I}
-    + \rho \vector{u} \vector{u}
-    - \frac{\vector{B} \vector{B}}{\mu_0}
-\right]} = 0
+\pdv{\rho \vec{u}}{t} + \dive{\ab[
+    \ab(p + \frac{\vec{B}^2}{2 \mu_0}) \vec{I}
+    + \rho \vec{u} \vec{u}
+    - \frac{\vec{B} \vec{B}}{\mu_0}
+]} = 0
 \end{equation}
 
 \subsection{能量守恒}
 
 \begin{equation}\begin{aligned}
-\vector{E} \cdot \vector{J} &= \frac{1}{\mu_0} (\curl{\vector{B}}) \cdot (\vector{B} \times \vector{u}) \\
-&= \frac{1}{\mu_0} \dive{\Big[ \vector{B} \times \big(\vector{B} \times \vector{u} \big) \Big]}
-    - \frac{1}{2 \mu_0} \pDeriv{\vector{B}^2}{t}
+\vec{E} \cdot \vec{J} &= \frac{1}{\mu_0} (\curl{\vec{B}}) \cdot (\vec{B} \times \vec{u}) \\
+&= \frac{1}{\mu_0} \dive{\Big[ \vec{B} \times \big(\vec{B} \times \vec{u} \big) \Big]}
+    - \frac{1}{2 \mu_0} \pdv{\vec{B}^2}{t}
 \end{aligned}\end{equation}
 
 则能量方程可以写成
 \begin{equation}
-\pDeriv{}{t}\left(
-    \frac{1}{2} \rho \vector{u}^2
+\pdv{}{t}\ab(
+    \frac{1}{2} \rho \vec{u}^2
     + \frac{3}{2} p
-    + \frac{\vector{B}^2}{2 \mu_0}
-\right)
-+ \dive{\left[
-    \left( \frac{1}{2} \rho \vector{u}^2 + \frac{5}{2} p  \right) \vector{u}
-    + \frac{1}{\mu_0} \vector{B} \times \big( \vector{u} \times \vector{B} \big)
-\right]} = 0
+    + \frac{\vec{B}^2}{2 \mu_0}
+)
++ \dive{\ab[
+    \ab( \frac{1}{2} \rho \vec{u}^2 + \frac{5}{2} p  ) \vec{u}
+    + \frac{1}{\mu_0} \vec{B} \times \big( \vec{u} \times \vec{B} \big)
+]} = 0
 \end{equation}
 
 \subsection{磁螺旋度守恒}
 
 局部螺旋性 (helicity) 密度
 \begin{equation}
-    K = \vector{A} \cdot \vector{B}
+    K = \vec{A} \cdot \vec{B}
 \end{equation}
-其中，$\vector{A}$ 为磁矢势。其与电标势 $\phi$ 有
+其中，$\vec{A}$ 为磁矢势。其与电标势 $\phi$ 有
 \begin{align}
-    \vector{E} &= - \grad{\phi} - \pDeriv{\vector{A}}{t} \\
-    \vector{B} &= \curl{\vector{A}}
+    \vec{E} &= - \grad{\phi} - \pdv{\vec{A}}{t} \\
+    \vec{B} &= \curl{\vec{A}}
 \end{align}
 
 \begin{equation}\begin{aligned}
-\pDeriv{K}{t} &= \vector{A} \cdot \pDeriv{\vector{B}}{t}
-+ \vector{B} \cdot \pDeriv{\vector{A}}{t} \\
-&= \dive{\left( \pDeriv{\vector{A}}{t} \times \vector{A} \right)}
-+ 2 \vector{B} \cdot \pDeriv{\vector{A}}{t} \\
-&= \dive{\left( \pDeriv{\vector{A}}{t} \times \vector{A} \right)}
-- 2 \vector{B} \cdot \left(\grad{\phi} + \vector{E}\right)
+\pdv{K}{t} &= \vec{A} \cdot \pdv{\vec{B}}{t}
++ \vec{B} \cdot \pdv{\vec{A}}{t} \\
+&= \dive{\ab( \pdv{\vec{A}}{t} \times \vec{A} )}
++ 2 \vec{B} \cdot \pdv{\vec{A}}{t} \\
+&= \dive{\ab( \pdv{\vec{A}}{t} \times \vec{A} )}
+- 2 \vec{B} \cdot \ab(\grad{\phi} + \vec{E})
 \end{aligned}\end{equation}
 
 则
 \begin{equation}
-\pDeriv{K}{t} + \dive{\left(
-    \vector{A} \times \pDeriv{\vector{A}}{t} + 2 \phi \vector{B}
-\right)} = - 2 \vector{E} \cdot \vector{B} = - 2 \eta \vector{J} \cdot \vector{B}
+\pdv{K}{t} + \dive{\ab(
+    \vec{A} \times \pdv{\vec{A}}{t} + 2 \phi \vec{B}
+)} = - 2 \vec{E} \cdot \vec{B} = - 2 \eta \vec{J} \cdot \vec{B}
 \end{equation}
 对于理想 MHD ，忽略电阻项
 \begin{equation}
-\pDeriv{K}{t} + \dive{\left(
-    \vector{A} \times \pDeriv{\vector{A}}{t} + 2 \phi \vector{B}
-\right)} = 0
+\pdv{K}{t} + \dive{\ab(
+    \vec{A} \times \pdv{\vec{A}}{t} + 2 \phi \vec{B}
+)} = 0
 \end{equation}
 
-由 $\phi = 0$ 及 $\vector{E} \times \d \vector{S} = 0$ 得
+由 $\phi = 0$ 及 $\vec{E} \times \d \vec{S} = 0$ 得
 \begin{equation}
-    \oint_S \left(
-    \vector{A} \times \pDeriv{\vector{A}}{t} + 2 \phi \vector{B}
-\right) \cdot \d \vector{S} = 0
+    \oint_S \ab(
+    \vec{A} \times \pdv{\vec{A}}{t} + 2 \phi \vec{B}
+) \cdot \d \vec{S} = 0
 \end{equation}
 则
 \begin{equation}
-    \pDeriv{}{t} \int_V K \, \d V = 0
+    \pdv{}{t} \int_V K \d V = 0
 \end{equation}
 
 另外，还有所谓的交叉螺旋性 (cross-helicity)
 \begin{equation}
-    K_c = \vector{u} \cdot \vector{B}
+    K_c = \vec{u} \cdot \vec{B}
 \end{equation}
 在磁流体湍流中起到重要作用。对于不可压缩的理想磁流体来说，它也是一个守恒量。
 
@@ -590,25 +593,25 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
 
 \subsubsection{经典力学}
 
-考虑一个由质点构成的系统，质点 $m_i$ 的位置为 $\vector{r}_i$，作用其上的力为 $\vector{F}_i$，动力学方程为：
+考虑一个由质点构成的系统，质点 $m_i$ 的位置为 $\vec{r}_i$，作用其上的力为 $\vec{F}_i$，动力学方程为：
 \begin{equation}
-    m_i \Deriv{\vector{v}_i}{t} = \vector{F}_i
+    m_i \mdv{\vec{v}_i}{t} = \vec{F}_i
 \end{equation}
 
 考虑
 \begin{equation}
-    G = \sum_i m_i \vector{v}_i \cdot \vector{r}_i
+    G = \sum_i m_i \vec{v}_i \cdot \vec{r}_i
 \end{equation}
 则
 \begin{equation}\begin{aligned}
-    \Deriv{G}{t} &= \sum_i \left( m_i \Deriv{\vector{v}_i}{t} \cdot \vector{r}_i
-    + \sum_i m_i \vector{v}_i \cdot \Deriv{\vector{r}_i}{t} \right) \\
-    &= 2 K + \sum_i \vector{F}_i \cdot \vector{r}_i
+    \mdv{G}{t} &= \sum_i \ab( m_i \mdv{\vec{v}_i}{t} \cdot \vec{r}_i
+    + \sum_i m_i \vec{v}_i \cdot \mdv{\vec{r}_i}{t} ) \\
+    &= 2 K + \sum_i \vec{F}_i \cdot \vec{r}_i
 \end{aligned}\end{equation}
 时间平均
 \begin{equation}\begin{aligned}
-    \frac{1}{T} \int_0^T \Deriv{G}{t} \, \d t
-    &= 2 \left\langle K \right\rangle + \left\langle \sum_i \vector{F}_i \cdot \vector{r}_i \right\rangle \\
+    \frac{1}{T} \int_0^T \mdv{G}{t} \d t
+    &= 2 \ab\langle K \rangle + \ab\langle \sum_i \vec{F}_i \cdot \vec{r}_i \rangle \\
     &= \frac{G(T) - G(0)}{T}
 \end{aligned}\end{equation}
 
@@ -618,22 +621,22 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
     \item 体系是有界的，则当 $T \to + \infty$ 时，上式右边为零。
 \end{itemize}
 
-若系统中质点的受力可以由一个标量势能函数 $V({\vector{r}_i})$ 导出，即
+若系统中质点的受力可以由一个标量势能函数 $V({\vec{r}_i})$ 导出，即
 \begin{equation}
-    \vector{F}_i = - \pDeriv{V}{\vector{r}_i}
+    \vec{F}_i = - \pdv{V}{\vec{r}_i}
 \end{equation}
 且体系的势能是是关于坐标的 $n$ 阶齐次函数：
 \begin{equation}
-    V({\alpha \vector{r}_i}) = \alpha^n V({\vector{r}_i})
+    V({\alpha \vec{r}_i}) = \alpha^n V({\vec{r}_i})
 \end{equation}
 对 $\alpha$ 求导有
 \begin{equation}\begin{aligned}
-\pDeriv{V({\alpha \vector{r}_i})}{\alpha} &= \alpha \sum_i \pDeriv{V({\alpha \vector{r}_i})}{(\alpha \vector{r}_i)} \\
-&= n \alpha^{n-1} V({\vector{r}_i})
+\pdv{V({\alpha \vec{r}_i})}{\alpha} &= \alpha \sum_i \pdv{V({\alpha \vec{r}_i})}{(\alpha \vec{r}_i)} \\
+&= n \alpha^{n-1} V({\vec{r}_i})
 \end{aligned}\end{equation}
 令 $\alpha = 1$ 有
 \begin{equation}
-    \sum_i \pDeriv{V({\vector{r}_i})}{\vector{r}_i} = n V({\vector{r}_i})
+    \sum_i \pdv{V({\vec{r}_i})}{\vec{r}_i} = n V({\vec{r}_i})
 \end{equation}
 
 故有位力定理
@@ -648,32 +651,32 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
 \subsubsection{磁流体}
 
 \begin{equation}
-\left\langle \int_V \left(
-    \rho \vector{u}^2 + \frac{\vector{B}^2}{2 \mu_0} + 3 p + 3 \rho \phi_g
-\right) \, \d V \right\rangle = 0
+\ab\langle \int_V \ab(
+    \rho \vec{u}^2 + \frac{\vec{B}^2}{2 \mu_0} + 3 p + 3 \rho \phi_g
+) \d V \rangle = 0
 \end{equation}
 
 \subsection{磁冻结与磁扩散}
 
 考虑磁场随时间变化的规律
 \begin{equation}\begin{aligned}
-    \pDeriv{\vector{B}}{t} &= - \curl{\vector{E}} \\
-    &= \curl{\big( \vector{u} \times \vector{B} - \eta \vector{J} \big)} \\
-    &= \curl{\big( \vector{u} \times \vector{B} \big)}
-    + \frac{\eta}{\mu_0} \laplace{\vector{B}}
-    - \grad{\left(\frac{\eta}{\mu_0}\right)} \times \big(\curl{\vector{B}}\big)
+    \pdv{\vec{B}}{t} &= - \curl{\vec{E}} \\
+    &= \curl{\big( \vec{u} \times \vec{B} - \eta \vec{J} \big)} \\
+    &= \curl{\big( \vec{u} \times \vec{B} \big)}
+    + \frac{\eta}{\mu_0} \laplacian{\vec{B}}
+    - \grad{\ab(\frac{\eta}{\mu_0})} \times \big(\curl{\vec{B}}\big)
 \end{aligned}\end{equation}
 一般有 $\dfrac{\eta}{\mu_0} = \text{const}$，则
 \begin{equation}
-    \pDeriv{\vector{B}}{t} = \curl{\big( \vector{u} \times \vector{B} \big)}
-    + \frac{\eta}{\mu_0} \laplace{\vector{B}}
+    \pdv{\vec{B}}{t} = \curl{\big( \vec{u} \times \vec{B} \big)}
+    + \frac{\eta}{\mu_0} \laplacian{\vec{B}}
 \end{equation}
 
 \subsubsection{磁扩散}
 
-当 $\vector{u}=0$ 时，有
+当 $\vec{u}=0$ 时，有
 \begin{equation}
-    \pDeriv{\vector{B}}{t} = \frac{\eta}{\mu_0} \laplace{\vector{B}}
+    \pdv{\vec{B}}{t} = \frac{\eta}{\mu_0} \laplacian{\vec{B}}
 \end{equation}
 这是一个扩散型方程, 表示磁场将从强场区向弱场区移动，而 $D_m = \dfrac{\eta}{\mu_0}$ 是磁扩散系数。
 
@@ -681,7 +684,7 @@ f(\vector{v}) = \left(\frac{m}{2 \pi k T}\right)^{3/2}
 
 当电阻 $\eta \sim 0$ 时，有
 \begin{equation}
-    \pDeriv{\vector{B}}{t} = \curl{\big( \vector{u} \times \vector{B} \big)}
+    \pdv{\vec{B}}{t} = \curl{\big( \vec{u} \times \vec{B} \big)}
 \end{equation}
 其物理意义通常解释为磁力线的冻结，即磁力线与流体元一同运动。
 

@@ -5,67 +5,67 @@
 
 求解本征值问题需要 \textbf{线性化}。即，把所有的量分成平衡量和扰动量两部分：$ f = f_0 + f_1 $。
 一般来说，线性化的量级分析需要满足扰动量远小于平衡量，即 $f_0 \gg f_1$。
-当然存在特殊情况，比如 $ \vector{u}_0 = \vector{0}, \vector{E}_0 = \vector{0} $，但是由于它们的平衡量不参与平衡，所以并不影响结论。
+当然存在特殊情况，比如 $ \vec{u}_0 = \vec{0}, \vec{E}_0 = \vec{0} $，但是由于它们的平衡量不参与平衡，所以并不影响结论。
 当扰动量增大到可以跟平衡量相比较的时候，非线性效应就显著起来了，线性化操作就不适用了。
-扰动是时间的函数，但平衡量可以简单假定 $ \deriv{f}{t} = 0 $。
+扰动是时间的函数，但平衡量可以简单假定 $ \odv{f}!{t} = 0 $。
 
 \section{均匀磁流体中的 MHD 波}
 
 本节先考虑最简单的情况，平衡量都是均匀的：
-$ \grad{p_0} = \vector{0}, \grad{\rho_0} = \vector{0}, \vector{B}_0 = B_0 \hat{\vector{b}}, \grad{B_0} = 0, \grad{\hat{\vector{b}}} = \vector{0} $。
+$ \grad{p_0} = \vec{0}, \grad{\rho_0} = \vec{0}, \vec{B}_0 = B_0 \hat{\vec{b}}, \grad{B_0} = 0, \grad{\hat{\vec{b}}} = \vec{0} $。
 并且扰动具有
-$ f_1 \propto \exp{[\im (\vector{k} \cdot \vector{r} - \omega t)]} $ 的单色平面波形式。
+$ f_1 \propto \exp{[\im (\vec{k} \cdot \vec{r} - \omega t)]} $ 的单色平面波形式。
 
 \subsection{理想均匀磁流体中的 MHD 波}
 
 基本方程是理想的 MHD 方程组：
 \begin{align}
-\pDeriv{\rho}{t} + \dive{\left(\rho \vector{u}\right)} &= 0
+\pdv{\rho}{t} + \dive{\ab(\rho \vec{u})} &= 0
 \tag{\ref{eq:IdealMHD_质量}} \\
-\rho \Deriv{\vector{u}}{t} &= \vector{J} \times \vector{B} - \grad{p}
+\rho \mdv{\vec{u}}{t} &= \vec{J} \times \vec{B} - \grad{p}
 \tag{\ref{eq:IdealMHD_动量}} \\
-\Deriv{}{t} \left(\frac{p}{\rho^\gamma}\right) &= 0
+\mdv{}{t} \ab(\frac{p}{\rho^\gamma}) &= 0
 \tag{\ref{eq:IdealMHD_状态}} \\
-\vector{E} + \vector{u} \times \vector{B} &= 0
+\vec{E} + \vec{u} \times \vec{B} &= 0
 \tag{\ref{eq:IdealMHD_欧姆}} \\
-\curl{\vector{E}} &= - \pDeriv{\vector{B}}{t}
+\curl{\vec{E}} &= - \pdv{\vec{B}}{t}
 \tag{\ref{eq:IdealMHD_电场}} \\
-\dive{\vector{B}} &= 0
+\dive{\vec{B}} &= 0
 \tag{\ref{eq:IdealMHD_磁场}} \\
-\curl{\vector{B}} &= \mu_0 \vector{J}
+\curl{\vec{B}} &= \mu_0 \vec{J}
 \tag{\ref{eq:IdealMHD_电流}}
 \end{align}
 
 接下来，将 MHD 方程组线性化：
 \begin{subequations}\begin{align}
-\pDeriv{\rho_1}{t} + \rho_0 \dive{\vector{u}_1} &= 0
+\pdv{\rho_1}{t} + \rho_0 \dive{\vec{u}_1} &= 0
 \label{eq:线性IdealMHD_质量} \\
-\rho_0 \pDeriv{\vector{u}_1}{t} &= \vector{J}_1 \times \vector{B}_0 - \grad{p_1}
+\rho_0 \pdv{\vec{u}_1}{t} &= \vec{J}_1 \times \vec{B}_0 - \grad{p_1}
 \label{eq:线性IdealMHD_动量} \\
-\pDeriv{p_1}{t} + \gamma p_0 \dive{\vector{u}_1} &= 0
+\pdv{p_1}{t} + \gamma p_0 \dive{\vec{u}_1} &= 0
 \label{eq:线性IdealMHD_状态} \\
-\vector{E}_1 + \vector{u}_1 \times \vector{B}_0 &= 0 \\
-\curl{\vector{E}_1} &= - \pDeriv{\vector{B}_1}{t} \\
-\dive{\vector{B}_1} &= 0 \\
-\curl{\vector{B}_1} &= \mu_0 \vector{J}_1
+\vec{E}_1 + \vec{u}_1 \times \vec{B}_0 &= 0 \\
+\curl{\vec{E}_1} &= - \pdv{\vec{B}_1}{t} \\
+\dive{\vec{B}_1} &= 0 \\
+\curl{\vec{B}_1} &= \mu_0 \vec{J}_1
 \end{align}\end{subequations}
 其中，电流密度的平衡量
 \begin{equation}
-\vector{J}_0 = \mu_0 \curl{\vector{B}_0} = \mu_0 \grad{B_0} \times \vector{e}_z = 0
+\vec{J}_0 = \mu_0 \curl{\vec{B}_0} = \mu_0 \grad{B_0} \times \vec{e}_z = 0
 \end{equation}
 
 \paragraph{状态方程 \ref{eq:IdealMHD_状态} 的线性化}
 首先，将全微分展开得到
 \begin{equation}\begin{aligned}
-\frac{1}{p} \Deriv{p}{t} &= \frac{\gamma}{\rho} \Deriv{\rho}{t} \\
-\frac{1}{p} \left(\pDeriv{p}{t} + \vector{u} \cdot \grad{p}\right)
-&= \frac{\gamma}{\rho} \left(\pDeriv{\rho}{t} + \vector{u} \cdot \grad{\rho}\right)
+\frac{1}{p} \mdv{p}{t} &= \frac{\gamma}{\rho} \mdv{\rho}{t} \\
+\frac{1}{p} \ab(\pdv{p}{t} + \vec{u} \cdot \grad{p})
+&= \frac{\gamma}{\rho} \ab(\pdv{\rho}{t} + \vec{u} \cdot \grad{\rho})
 \end{aligned}\end{equation}
 
 然后，线性化
 \begin{equation}
-\frac{1}{p_0} \pDeriv{p_1}{t}
-= \frac{\gamma}{\rho_0} \pDeriv{\rho_1}{t}
+\frac{1}{p_0} \pdv{p_1}{t}
+= \frac{\gamma}{\rho_0} \pdv{\rho_1}{t}
 \end{equation}
 其中，分子的平衡量通过减去平衡方程去除，分母的扰动量根据 $f_0 \gg f_1$ 忽略。
 
@@ -73,72 +73,72 @@ $ f_1 \propto \exp{[\im (\vector{k} \cdot \vector{r} - \omega t)]} $ 的单色�
 
 将线性的动量方程 \ref{eq:线性IdealMHD_动量} 再对时间 $t$ 求一次偏导，再代入其他扰动量得
 \begin{equation}
-\rho_0 \pDerivS{\vector{u}_1}{t}
-= \frac{1}{\mu_0} \bigg\{ \curl{\Big[ \curl{\big( \vector{u}_1 \times \vector{B}_0 \big)} \Big]} \bigg\} \times \vector{B}_0
-+ \gamma p_0 \grad{\dive{\vector{u}_1}}
+\rho_0 \pdv[2]{\vec{u}_1}{t}
+= \frac{1}{\mu_0} \bigg\{ \curl{\Big[ \curl{\big( \vec{u}_1 \times \vec{B}_0 \big)} \Big]} \bigg\} \times \vec{B}_0
++ \gamma p_0 \grad{\dive{\vec{u}_1}}
 \end{equation}
 
 对于具有单色平面波形式的扰动，有
 \begin{subequations}\begin{align}
-\pDeriv{f_1}{t} &= - \im \omega f_1 \\
-\grad{f_1} &= \im \vector{k} f_1
+\pdv{f_1}{t} &= - \im \omega f_1 \\
+\grad{f_1} &= \im \vec{k} f_1
 \end{align}\end{subequations}
 代入得
 \begin{equation} \label{eq:04MHDwaves_raw}
-\rho_0 \omega^2 \vector{u}_1
-= \frac{1}{\mu_0} \bigg\{ \vector{k} \times \Big[ \vector{k} \times \big( \vector{u}_1 \times \vector{B}_0 \big) \Big] \bigg\} \times \vector{B}_0
-+ \gamma p_0 \vector{k} \vector{k} \cdot \vector{u}_1
+\rho_0 \omega^2 \vec{u}_1
+= \frac{1}{\mu_0} \bigg\{ \vec{k} \times \Big[ \vec{k} \times \big( \vec{u}_1 \times \vec{B}_0 \big) \Big] \bigg\} \times \vec{B}_0
++ \gamma p_0 \vec{k} \vec{k} \cdot \vec{u}_1
 \end{equation}
-这是一个形如 $ \vector{M} \cdot \vector{u}_1 = \vector{0} $ 的方程，
-所以存在非平凡解的条件是系数矩阵 $\vector{M}$ 满足 $\det(\vector{M}) = 0$，
-从而直接给出色散关系（dispersion relation）$\omega = \omega(\vector{k})$。
+这是一个形如 $ \vec{M} \cdot \vec{u}_1 = \vec{0} $ 的方程，
+所以存在非平凡解的条件是系数矩阵 $\vec{M}$ 满足 $\det(\vec{M}) = 0$，
+从而直接给出色散关系（dispersion relation）$\omega = \omega(\vec{k})$。
 
-接下来展示使用矢量分析的办法来求解的过程。根据 $\vector{A} \times \big(\vector{B} \times \vector{C}\big)$，式 \ref{eq:04MHDwaves_raw} 变为
+接下来展示使用矢量分析的办法来求解的过程。根据 $\vec{A} \times \big(\vec{B} \times \vec{C}\big)$，式 \ref{eq:04MHDwaves_raw} 变为
 \begin{equation} \label{eq:04MHDwaves_raw2}
-(\omega^2 - v_A^2 k^2) \vector{u}_1
-= - v_A^2 \Big[ \vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) \Big] \vector{k} \times \hat{\vector{b}}
-- v_A^2 k^2 \vector{u}_1 \cdot \hat{\vector{b}} \hat{\vector{b}}
-+ c_s^2 \vector{u}_1 \cdot \vector{k} \vector{k}
+(\omega^2 - v_A^2 k^2) \vec{u}_1
+= - v_A^2 \Big[ \vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) \Big] \vec{k} \times \hat{\vec{b}}
+- v_A^2 k^2 \vec{u}_1 \cdot \hat{\vec{b}} \hat{\vec{b}}
++ c_s^2 \vec{u}_1 \cdot \vec{k} \vec{k}
 \end{equation}
-其中，$\hat{\vector{b}} = \dfrac{\vector{B}_0}{B_0} = \vector{e}_z$ 为磁场的方向，$c_s = \sqrt{\dfrac{\gamma p_0}{\rho_0}}$ 为等离子体声速，$v_A = \sqrt{\dfrac{B_0^2}{\mu_0 \rho_0}}$ 为阿尔芬速度。
+其中，$\hat{\vec{b}} = \dfrac{\vec{B}_0}{B_0} = \vec{e}_z$ 为磁场的方向，$c_s = \sqrt{\dfrac{\gamma p_0}{\rho_0}}$ 为等离子体声速，$v_A = \sqrt{\dfrac{B_0^2}{\mu_0 \rho_0}}$ 为阿尔芬速度。
 
-用 $\vector{k}$ 点乘式 \ref{eq:04MHDwaves_raw2} 得
+用 $\vec{k}$ 点乘式 \ref{eq:04MHDwaves_raw2} 得
 \begin{equation} \label{eq:04MHDwaves_k}
-\big[\omega^2 - (v_A^2 + c_s^2) k^2 \big] \vector{u}_1 \cdot \vector{k}
-+ v_A^2 k^2 \vector{u}_1 \cdot \hat{\vector{b}} \hat{\vector{b}} \cdot \vector{k} = 0
+\big[\omega^2 - (v_A^2 + c_s^2) k^2 \big] \vec{u}_1 \cdot \vec{k}
++ v_A^2 k^2 \vec{u}_1 \cdot \hat{\vec{b}} \hat{\vec{b}} \cdot \vec{k} = 0
 \end{equation}
 带回式 \ref{eq:04MHDwaves_raw2} 得
 \begin{equation}
-(\omega^2 - v_A^2 k^2) \vector{u}_1
-= - v_A^2 \Big[ \vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) \Big] \vector{k} \times \hat{\vector{b}}
-- v_A^2 k^2 \vector{u}_1 \cdot \hat{\vector{b}} \hat{\vector{b}}
-- \frac{v_A^2 c_s^2 k^2 \vector{u}_1 \cdot \hat{\vector{b}} \hat{\vector{b}} \cdot \vector{k}}{\omega^2 - (v_A^2 + c_s^2) k^2} \vector{k}
+(\omega^2 - v_A^2 k^2) \vec{u}_1
+= - v_A^2 \Big[ \vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) \Big] \vec{k} \times \hat{\vec{b}}
+- v_A^2 k^2 \vec{u}_1 \cdot \hat{\vec{b}} \hat{\vec{b}}
+- \frac{v_A^2 c_s^2 k^2 \vec{u}_1 \cdot \hat{\vec{b}} \hat{\vec{b}} \cdot \vec{k}}{\omega^2 - (v_A^2 + c_s^2) k^2} \vec{k}
 \end{equation}
-再点乘式 $\hat{\vector{b}}$ 得
+再点乘式 $\hat{\vec{b}}$ 得
 \begin{equation}
-\left[ \omega^2 + \frac{
-    v_A^2 c_s^2 k^2 (\hat{\vector{b}} \cdot \vector{k})^2
-}{\omega^2 - (v_A^2 + c_s^2) k^2} \right] \big(\vector{u}_1 \cdot \hat{\vector{b}}\big) = 0
+\ab[ \omega^2 + \frac{
+    v_A^2 c_s^2 k^2 (\hat{\vec{b}} \cdot \vec{k})^2
+}{\omega^2 - (v_A^2 + c_s^2) k^2} ] \big(\vec{u}_1 \cdot \hat{\vec{b}}\big) = 0
 \end{equation}
 上式有两个解
 \begin{subequations}\begin{align}
-\vector{u}_1 \cdot \hat{\vector{b}} &= 0
+\vec{u}_1 \cdot \hat{\vec{b}} &= 0
 \label{eq:04MHDwaves_solution1}\\
 \omega^2 + \frac{
-    v_A^2 c_s^2 k^2 (\hat{\vector{b}} \cdot \vector{k})^2
+    v_A^2 c_s^2 k^2 (\hat{\vec{b}} \cdot \vec{k})^2
 }{\omega^2 - (v_A^2 + c_s^2) k^2} &= 0 \label{eq:04MHDwaves_solution2}
 \end{align}\end{subequations}
 
-用 $\vector{k} \times \hat{\vector{b}}$ 点乘式 \ref{eq:04MHDwaves_raw2} 得
+用 $\vec{k} \times \hat{\vec{b}}$ 点乘式 \ref{eq:04MHDwaves_raw2} 得
 \begin{equation}
-\bigg\{\omega^2 + v_A^2 \Big[ \big(\vector{k} \times \hat{\vector{b}} \big)^2 - k^2\Big] \bigg\}
-\Big[ \vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) \Big] = 0
+\bigg\{\omega^2 + v_A^2 \Big[ \big(\vec{k} \times \hat{\vec{b}} \big)^2 - k^2\Big] \bigg\}
+\Big[ \vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) \Big] = 0
 \end{equation}
 上式也有两个解
 \begin{subequations}\begin{align}
-\vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) &= 0
+\vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) &= 0
 \label{eq:04MHDwaves_solution3} \\
-\omega^2 + v_A^2 \Big[ \big(\vector{k} \times \hat{\vector{b}} \big)^2 - k^2\Big] &= 0
+\omega^2 + v_A^2 \Big[ \big(\vec{k} \times \hat{\vec{b}} \big)^2 - k^2\Big] &= 0
 \label{eq:04MHDwaves_solution4}
 \end{align}\end{subequations}
 
@@ -146,116 +146,116 @@ $ f_1 \propto \exp{[\im (\vector{k} \cdot \vector{r} - \omega t)]} $ 的单色�
 
 考虑解 \ref{eq:04MHDwaves_solution1}，式 \ref{eq:04MHDwaves_k} 变为
 \begin{equation}
-\big[\omega^2 - (v_A^2 + c_s^2) k^2 \big] \vector{u}_1 \cdot \vector{k} = 0
+\big[\omega^2 - (v_A^2 + c_s^2) k^2 \big] \vec{u}_1 \cdot \vec{k} = 0
 \end{equation}
 上式有两解：
 \begin{subequations}\begin{align}
-\vector{u}_1 \cdot \vector{k} &= 0 \\
+\vec{u}_1 \cdot \vec{k} &= 0 \\
 \omega^2 - (v_A^2 + c_s^2) k^2 &= 0
 \end{align}\end{subequations}
 
-而用 $\hat{\vector{b}}$ 点乘式 \ref{eq:04MHDwaves_raw2} 得
+而用 $\hat{\vec{b}}$ 点乘式 \ref{eq:04MHDwaves_raw2} 得
 \begin{equation}
-c_s^2 \vector{u}_1 \cdot \vector{k} \vector{k} \cdot \hat{\vector{b}} = 0
+c_s^2 \vec{u}_1 \cdot \vec{k} \vec{k} \cdot \hat{\vec{b}} = 0
 \end{equation}
 上式也有两解：
 \begin{subequations}\begin{align}
-\vector{u}_1 \cdot \vector{k} &= 0 \\
-\vector{k} \cdot \hat{\vector{b}} &= 0
+\vec{u}_1 \cdot \vec{k} &= 0 \\
+\vec{k} \cdot \hat{\vec{b}} &= 0
 \end{align}\end{subequations}
 
-取两组解的共同部分 $\vector{u}_1 \cdot \vector{k} = 0$，即不可压缩条件 $\dive{\vector{u}_1} = 0$。
+取两组解的共同部分 $\vec{u}_1 \cdot \vec{k} = 0$，即不可压缩条件 $\dive{\vec{u}_1} = 0$。
 
 再考虑解 \ref{eq:04MHDwaves_solution1} 作为色散关系：
 \begin{equation} \label{eq:04MHDwaves_SAW}
 \omega^2 = k_\parallel^2 v_A^2
 \end{equation}
 这就是剪切阿尔芬波（Shear Alfvén Wave，SAW）的色散关系。其是等离子体中最低频的电磁波之一。
-其中$k_\parallel = \vector{k} \cdot \hat{\vector{b}}$ 是平行波数，
-有 $k^2 - (\vector{k} \times \hat{\vector{b}})^2 = (\vector{k} \cdot \hat{\vector{b}})^2$。
+其中$k_\parallel = \vec{k} \cdot \hat{\vec{b}}$ 是平行波数，
+有 $k^2 - (\vec{k} \times \hat{\vec{b}})^2 = (\vec{k} \cdot \hat{\vec{b}})^2$。
 
-由于不可压缩条件 $\vector{u}_1 \cdot \vector{k} = 0$，剪切阿尔芬波不存在压强和密度扰动：
+由于不可压缩条件 $\vec{u}_1 \cdot \vec{k} = 0$，剪切阿尔芬波不存在压强和密度扰动：
 \begin{subequations}\begin{align}
-\pDeriv{p_1}{t} &= - \gamma p_0 \dive{\vector{u}_1} = 0 \\
-\pDeriv{\rho_1}{t} &= - \rho_0 \dive{\vector{u}_1} = 0
+\pdv{p_1}{t} &= - \gamma p_0 \dive{\vec{u}_1} = 0 \\
+\pdv{\rho_1}{t} &= - \rho_0 \dive{\vec{u}_1} = 0
 \end{align}\end{subequations}
 
-从色散关系上看，$\omega \propto k_\parallel$，所以如果 $\vector{k} \perp \hat{\vector{b}}$，则无法形成 SAW。当 $\vector{k} \parallel \hat{\vector{b}}$ 时，上述推导过程不成立，因为色散关系的导出利用了 $\vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) \neq 0$ 的条件。但当 $\vector{k} \propto \hat{\vector{b}}$ 时，从式 \ref{eq:04MHDwaves_raw2} 也可得到 $\omega^2 = k^2 v_A^2$，与式 \ref{eq:04MHDwaves_SAW} 形式一致。
+从色散关系上看，$\omega \propto k_\parallel$，所以如果 $\vec{k} \perp \hat{\vec{b}}$，则无法形成 SAW。当 $\vec{k} \parallel \hat{\vec{b}}$ 时，上述推导过程不成立，因为色散关系的导出利用了 $\vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) \neq 0$ 的条件。但当 $\vec{k} \propto \hat{\vec{b}}$ 时，从式 \ref{eq:04MHDwaves_raw2} 也可得到 $\omega^2 = k^2 v_A^2$，与式 \ref{eq:04MHDwaves_SAW} 形式一致。
 
-对于电场扰动 $\vector{E}_1$ 和磁场扰动 $\vector{B}_1$，有
+对于电场扰动 $\vec{E}_1$ 和磁场扰动 $\vec{B}_1$，有
 \begin{subequations}\begin{align}
-\vector{E}_1 &= B_0 \hat{\vector{b}} \times \vector{u}_1 \\
-\vector{B}_1 &= - B_0 \frac{k_\parallel}{\omega} \vector{u}_1
+\vec{E}_1 &= B_0 \hat{\vec{b}} \times \vec{u}_1 \\
+\vec{B}_1 &= - B_0 \frac{k_\parallel}{\omega} \vec{u}_1
 \end{align}\end{subequations}
 
 因此对 SAW，我们可以综合给出：
 \begin{subequations}\begin{align}
-\vector{u}_1 &\perp \vector{k} \Rightarrow \text{流体横波} \\
-\vector{u}_1 &\perp \hat{\vector{b}} \\
-\vector{u}_1 &\parallel \vector{B}_1 \\
-\vector{B}_1 &\perp \vector{k} \Rightarrow \text{磁横波} \\
-\vector{B}_1 &\perp \hat{\vector{b}}
+\vec{u}_1 &\perp \vec{k} \rightarrow \text{流体横波} \\
+\vec{u}_1 &\perp \hat{\vec{b}} \\
+\vec{u}_1 &\parallel \vec{B}_1 \\
+\vec{B}_1 &\perp \vec{k} \rightarrow \text{磁横波} \\
+\vec{B}_1 &\perp \hat{\vec{b}}
 \end{align}\end{subequations}
-所以剪切阿尔芬波是等离子体横波 + 磁横波。因此，若只考虑剪切阿尔芬波，可以令 $p_1=0$、$\rho_1=0$、$\vector{k}\parallel\hat{\vector{b}}$ 和 $\vector{u}_1 \cdot \vector{k}=0$。
+所以剪切阿尔芬波是等离子体横波 + 磁横波。因此，若只考虑剪切阿尔芬波，可以令 $p_1=0$、$\rho_1=0$、$\vec{k}\parallel\hat{\vec{b}}$ 和 $\vec{u}_1 \cdot \vec{k}=0$。
 
 \subsubsection{磁声波}
 
 考虑解 \ref{eq:04MHDwaves_solution2}，得
 \begin{equation}
-\omega^2 = \frac{v_A^2 + c_s^2}{2} k^2 \left[
+\omega^2 = \frac{v_A^2 + c_s^2}{2} k^2 \ab[
     1 \pm \sqrt{1 - \frac{
         4 v_A^2 c_s^2
     }{
         (v_A^2 + c_s^2)^2
     }
     \frac{k_\parallel^2}{k^2} }
-\right]
+]
 \end{equation}
 此即磁声波（Magnetosonic waves）的色散关系，$\pm$ 号分别对应快/慢磁声波。
 
 \paragraph{
-    $\vector{k} \parallel \hat{\vector{b}}$
+    $\vec{k} \parallel \hat{\vec{b}}$
     的情况
 }
 
 色散方程可化简为
 \begin{equation}
-\omega^2 = \left\{\begin{aligned}
-&   k^2 v_A^2 \\
-&   k^2 c_s^2
-\end{aligned}\right.
+\omega^2 = \begin{cases}
+    k^2 v_A^2 \\
+    k^2 c_s^2
+\end{cases}
 \end{equation}
-这表明：快（慢）磁声波在 $\vector{k} \parallel \hat{\vector{b}}$ 的条件下，存在唯一一个非平凡解，即声波，另一支与阿尔芬波重复。
+这表明：快（慢）磁声波在 $\vec{k} \parallel \hat{\vec{b}}$ 的条件下，存在唯一一个非平凡解，即声波，另一支与阿尔芬波重复。
 
 对于声波来说，有
 \begin{subequations}\begin{align}
-\vector{k} &\parallel \hat{\vector{b}} \\
-\vector{u}_1 &\cdot \vector{k} \neq 0 \Rightarrow \text{流体纵波}
+\vec{k} &\parallel \hat{\vec{b}} \\
+\vec{u}_1 &\cdot \vec{k} \neq 0 \rightarrow \text{流体纵波}
 \end{align}\end{subequations}
 
 \paragraph{
-    $\vector{k} \perp \hat{\vector{b}}$
+    $\vec{k} \perp \hat{\vec{b}}$
     的情况
 }
 
 色散方程可化简为
 \begin{equation}
-\omega^2 = \left\{\begin{aligned}
-&   k^2 (v_A^2 + c_s^2) \\
-&   0
-\end{aligned}\right.
+\omega^2 = \begin{cases}
+    k^2 (v_A^2 + c_s^2) \\
+    0
+\end{cases}
 \end{equation}
 这表明：慢磁声波消失了，
 而快磁声波简化成声速与阿尔芬速度的直接相加。
 很多时候我们将这支波快磁声波简称为磁声波。
-此时有 $\vector{u}_1 \parallel \vector{k}$，可得流体是可压缩的（$\vector{u}_1 \cdot \vector{k} \neq 0$）。
+此时有 $\vec{u}_1 \parallel \vec{k}$，可得流体是可压缩的（$\vec{u}_1 \cdot \vec{k} \neq 0$）。
 
 \begin{subequations}\begin{align}
-\vector{k} &\perp \hat{\vector{b}} \\
-\vector{u}_1 &\parallel \vector{k} \Rightarrow \text{流体纵波} \\
-\vector{u}_1 &\perp \hat{\vector{b}} \\
-\vector{B}_1 &\parallel \hat{\vector{b}} \\
-\vector{B}_1 &\perp \vector{k} \Rightarrow \text{磁纵波}
+\vec{k} &\perp \hat{\vec{b}} \\
+\vec{u}_1 &\parallel \vec{k} \rightarrow \text{流体纵波} \\
+\vec{u}_1 &\perp \hat{\vec{b}} \\
+\vec{B}_1 &\parallel \hat{\vec{b}} \\
+\vec{B}_1 &\perp \vec{k} \rightarrow \text{磁纵波}
 \end{align}\end{subequations}
 
 \subsection{各种非理想效应的影响}
@@ -264,27 +264,27 @@ c_s^2 \vector{u}_1 \cdot \vector{k} \vector{k} \cdot \hat{\vector{b}} = 0
 
 广义欧姆定律变为：
 \begin{equation}
-\vector{E} + \vector{u} \times \vector{B} = \eta \vector{J} \tag{\ref{eq:02MHD_欧姆}}
+\vec{E} + \vec{u} \times \vec{B} = \eta \vec{J} \tag{\ref{eq:02MHD_欧姆}}
 \end{equation}
 
 其扰动形式给出：
 \begin{equation}
-\vector{E}_1 + \vector{u}_1 \times \vector{B}_0 = \eta \vector{J}_1
+\vec{E}_1 + \vec{u}_1 \times \vec{B}_0 = \eta \vec{J}_1
 \end{equation}
-两边用 $\vector{k}$ 叉乘后，代入 $\vector{E}_1$ 与 $\vector{J}_1$ 得
+两边用 $\vec{k}$ 叉乘后，代入 $\vec{E}_1$ 与 $\vec{J}_1$ 得
 \begin{equation}
-\left( \omega + \im \frac{\eta}{\mu_0} k^2 \right) \vector{k} \times \vector{B}_1
-= k^2 \big( \vector{u}_1 \times \vector{B}_0 \big) + \Big[ \vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) \Big] \vector{k}
+\ab( \omega + \im \frac{\eta}{\mu_0} k^2 ) \vec{k} \times \vec{B}_1
+= k^2 \big( \vec{u}_1 \times \vec{B}_0 \big) + \Big[ \vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) \Big] \vec{k}
 \end{equation}
 代入动量方程得
 \begin{equation}
-\left(\omega^2
+\ab(\omega^2
     - \frac{v_A^2}{1 + \im \frac{\eta}{\mu_0}\frac{k^2}{\omega}} k^2
-\right) \vector{u}_1
-= c_s^2 \vector{u}_1 \cdot \vector{k} \vector{k}
+) \vec{u}_1
+= c_s^2 \vec{u}_1 \cdot \vec{k} \vec{k}
 - \frac{v_A^2}{1 + \im \frac{\eta}{\mu_0}\frac{k^2}{\omega}} \bigg\{
-    \Big[ \vector{u}_1 \cdot \big(\vector{k} \times \hat{\vector{b}} \big) \Big] \vector{k} \times \hat{\vector{b}}
-    + k^2 \vector{u}_1 \cdot \hat{\vector{b}} \hat{\vector{b}}
+    \Big[ \vec{u}_1 \cdot \big(\vec{k} \times \hat{\vec{b}} \big) \Big] \vec{k} \times \hat{\vec{b}}
+    + k^2 \vec{u}_1 \cdot \hat{\vec{b}} \hat{\vec{b}}
 \bigg\}
 \end{equation}
 可以看到有限电导率的贡献通过阿尔芬速度体现
@@ -294,41 +294,41 @@ v_A^2 \rightarrow \frac{v_A^2}{1 + \im \frac{\eta}{\mu_0}\frac{k^2}{\omega}}
 
 对于剪切阿尔芬波，色散关系变为
 \begin{equation}
-\omega^2 \left(1 + \im \frac{\eta}{\mu_0}\frac{k^2}{\omega}\right) = k_\parallel^2 v_A^2
+\omega^2 \ab(1 + \im \frac{\eta}{\mu_0}\frac{k^2}{\omega}) = k_\parallel^2 v_A^2
 \end{equation}
 由于实数电阻引入了虚部，所以频率或者波数必须有虚部，引起耗散，使得波的能量要随时间减少。
-考虑波矢 $\vector{k}$ 为复数，则在不同位置振幅不同，适合考察波动在空间中传播的情况。
+考虑波矢 $\vec{k}$ 为复数，则在不同位置振幅不同，适合考察波动在空间中传播的情况。
 若考虑频率 $\omega$ 为复数，则在不同时间振幅不同，适合考察波动在时间中传播的情况。
 
-考虑 $\vector{k} \parallel \hat{\vector{b}}$ 的简单情况，若考虑频率 $\omega$ 为复数，则给出
+考虑 $\vec{k} \parallel \hat{\vec{b}}$ 的简单情况，若考虑频率 $\omega$ 为复数，则给出
 \begin{subequations}\begin{align}
 \omega_r^2 &= v_A^2 k^2 - \frac{1}{4} \omega_i^2 \\
 \omega_i &= - \frac{\eta}{2 \mu_0} k^2
 \end{align}\end{subequations}
 其中，频率 $\omega$ 的虚部 $\omega_i$ 也表示波的增长率或阻尼率（damping rate），也记作 $\gamma$。但为了不与绝热指数混淆，本书采用 $\omega_i$。不难发现，$\omega_i \propto \eta, k^2, \lambda^{-2}$，所以短波更容易被阻尼。
 
-同样的，若考虑波矢 $\vector{k}$ 为复数，则给出
+同样的，若考虑波矢 $\vec{k}$ 为复数，则给出
 \begin{subequations}\begin{align}
 \omega^2 &= v_A^2 (k_r^2 - k_i^2) \\
 k_i &= \frac{\eta}{2 \mu_0 v_A^2} \omega k_r
 \end{align}\end{subequations}
-其中，波矢 $\vector{k}$ 的虚部 $k_i$ 也表示波在空间的增长率或阻尼率，其衰减的特征长度 $L = k_i^{-1}$。不难发现，高频波穿透深度短；良导体穿透深度长。
+其中，波矢 $\vec{k}$ 的虚部 $k_i$ 也表示波在空间的增长率或阻尼率，其衰减的特征长度 $L = k_i^{-1}$。不难发现，高频波穿透深度短；良导体穿透深度长。
 
 \subsubsection{粘滞效应}
 
 仅考虑粘滞效应对剪切阿尔芬波的影响。在不可压缩条件下，粘滞效应可以简化，只保留第一粘滞系数，则动量方程变为
 \begin{equation}
-\rho \Deriv{\vector{u}}{t} = \vector{J} \times \vector{B} - \grad{p} + w \laplace{\vector{u}}
+\rho \mdv{\vec{u}}{t} = \vec{J} \times \vec{B} - \grad{p} + w \laplacian{\vec{u}}
 \end{equation}
 
 色散关系变为
 \begin{equation}
-\omega^2 \left(1 + \im \frac{w}{\rho_0} \frac{k^2}{\omega}\right)
-\left(1 + \im \frac{\eta}{\mu_0} \frac{k^2}{\omega}\right) = k_\parallel^2 v_A^2
+\omega^2 \ab(1 + \im \frac{w}{\rho_0} \frac{k^2}{\omega})
+\ab(1 + \im \frac{\eta}{\mu_0} \frac{k^2}{\omega}) = k_\parallel^2 v_A^2
 \end{equation}
 当 $\dfrac{w}{\rho_0} \dfrac{k^2}{\omega}$、$\dfrac{\eta}{\mu_0} \dfrac{k^2}{\omega}$ 都是小量时，可以再次简化：
 \begin{equation}
-\omega^2 \left[1 + \im \left(\frac{w}{\rho_0} + \frac{\eta}{\mu_0}\right) \frac{k^2}{\omega}\right] = k_\parallel^2 v_A^2
+\omega^2 \ab[1 + \im \ab(\frac{w}{\rho_0} + \frac{\eta}{\mu_0}) \frac{k^2}{\omega}] = k_\parallel^2 v_A^2
 \end{equation}
 不难发现，只要将 $\dfrac{\eta}{\mu_0} \rightarrow \dfrac{w}{\rho_0} + \dfrac{\eta}{\mu_0}$，就可以完全套用上一节中只有电阻存在时候的结论。这说明在不影响平衡时候的扰动状态下，
 粘滞和电阻的角色高度相似。
@@ -340,40 +340,40 @@ k_i &= \frac{\eta}{2 \mu_0 v_A^2} \omega k_r
 
 \subsubsection{柱坐标系下的简单阿尔芬波}
 
-本节考虑 $\vector{k}\parallel\hat{\vector{b}}$ 的情况下最简单的剪切阿尔芬波。
+本节考虑 $\vec{k}\parallel\hat{\vec{b}}$ 的情况下最简单的剪切阿尔芬波。
 平衡量：
-$\vector{u}_0 = \vector{0}$、$\rho_0 = \text{const}$、$p_0 = \text{const}$、$\vector{B}_0 = B_0 \vector{e}_z = \text{const}$、$\vector{J}_0 = \vector{0} $。
+$\vec{u}_0 = \vec{0}$、$\rho_0 = \text{const}$、$p_0 = \text{const}$、$\vec{B}_0 = B_0 \vec{e}_z = \text{const}$、$\vec{J}_0 = \vec{0} $。
 扰动量：
-$\rho_1 = p_1 = 0$、$\dive{\vector{u}_1} = 0$、$\vector{u}_1 = u_\theta \vector{e}_\theta$、$\vector{B}_1 = B_\theta \vector{e}_\theta$、$\vector{k} = k \vector{e}_z $。
+$\rho_1 = p_1 = 0$、$\dive{\vec{u}_1} = 0$、$\vec{u}_1 = u_\theta \vec{e}_\theta$、$\vec{B}_1 = B_\theta \vec{e}_\theta$、$\vec{k} = k \vec{e}_z $。
 线性化 MHD 方程组：
 \begin{subequations}\begin{align}
-\rho_0 \pDeriv{\vector{u}_1}{t} &= \vector{J}_1 \times \vector{B}_0 \\
-\vector{E}_1 + \vector{u}_1 \times \vector{B}_0 &= \eta \vector{J}_1 \\
-\curl{\vector{E}_1} &= - \pDeriv{\vector{B}_1}{t} \\
-\curl{\vector{B}_1} &= \mu_0 \vector{J}_1
+\rho_0 \pdv{\vec{u}_1}{t} &= \vec{J}_1 \times \vec{B}_0 \\
+\vec{E}_1 + \vec{u}_1 \times \vec{B}_0 &= \eta \vec{J}_1 \\
+\curl{\vec{E}_1} &= - \pdv{\vec{B}_1}{t} \\
+\curl{\vec{B}_1} &= \mu_0 \vec{J}_1
 \end{align}\end{subequations}
-与笛卡尔坐标系不同，$\nabla$ 不能直接用 $\im\vector{k}$ 代替。
+与笛卡尔坐标系不同，$\nabla$ 不能直接用 $\im\vec{k}$ 代替。
 在柱坐标系下，假定扰动量具有如下形式：$f_1 = f_{1,r}(r) \exp{[\im (m \theta + k z - \omega t)]}$。
 
 由不可压缩条件
 \begin{equation}\begin{aligned}
-\dive{\vector{u}_1} &= \frac{1}{r} \pDeriv{}{r}(r u_r) + \im \frac{m}{r} u_\theta + \im k_z u_z \\
+\dive{\vec{u}_1} &= \frac{1}{r} \pdv{}{r}(r u_r) + \im \frac{m}{r} u_\theta + \im k_z u_z \\
 &= \im \frac{m}{r} u_\theta \\
 &= 0
 \end{aligned}\end{equation}
-得 $m = 0$，$\vector{k} = k \vector{e}_z$。
+得 $m = 0$，$\vec{k} = k \vec{e}_z$。
 
 动量方程
 \begin{equation}\begin{aligned}
-- \im \omega \mu_0 \rho_0 \vector{u}_1 &=
-\big( \curl{\vector{B}_1} \big) \times \vector{B}_0 \\
-&= \vector{B}_0 \cdot \grad{\vector{B}_1}
-+ \vector{B}_1 \cdot \grad{\vector{B}_0}
-- \grad{\big(\vector{B}_1 \cdot \vector{B}_0\big)}
-- \big( \curl{\vector{B}_0} \big) \times \vector{B}_1 \\
-&= \vector{B}_0 \cdot \grad{\vector{B}_1} \\
-&= B_0 \pDeriv{}{z} \vector{B}_1 \\
-&= \im k B_0 \vector{B}_1
+- \im \omega \mu_0 \rho_0 \vec{u}_1 &=
+\big( \curl{\vec{B}_1} \big) \times \vec{B}_0 \\
+&= \vec{B}_0 \cdot \grad{\vec{B}_1}
++ \vec{B}_1 \cdot \grad{\vec{B}_0}
+- \grad{\big(\vec{B}_1 \cdot \vec{B}_0\big)}
+- \big( \curl{\vec{B}_0} \big) \times \vec{B}_1 \\
+&= \vec{B}_0 \cdot \grad{\vec{B}_1} \\
+&= B_0 \pdv{}{z} \vec{B}_1 \\
+&= \im k B_0 \vec{B}_1
 \end{aligned}\end{equation}
 得
 \begin{equation}
@@ -382,52 +382,52 @@ u_\theta = - \frac{k}{\omega \mu_0 \rho_0} B_0 B_\theta
 
 剩余三个方程得到
 \begin{equation}
-\left( \pDeriv{}{t} - \frac{\eta}{\mu_0} \laplace{} \right) \vector{B}_1 = \vector{B}_0 \cdot \grad{\vector{u}_1}
+\ab( \pdv{}{t} - \frac{\eta}{\mu_0} \laplacian{} ) \vec{B}_1 = \vec{B}_0 \cdot \grad{\vec{u}_1}
 \end{equation}
 其中
 \begin{equation}\begin{aligned}
-\laplace{\vector{B}_1} &=
-\big(\laplace{B_\theta}\big) \vector{e}_\theta
-+ B_\theta \laplace{\vector{e}_\theta}
-+ 2 \big(\grad{B_\theta}\big) \cdot \grad{\vector{e}_\theta} \\
-&= \left[
-\frac{1}{r} \pDeriv{}{r} \left(r \pDeriv{B_\theta}{r}\right)
-- \left(\frac{1}{r^2} + k^2\right) B_\theta
-\right] \vector{e}_\theta
+\laplacian{\vec{B}_1} &=
+\big(\laplacian{B_\theta}\big) \vec{e}_\theta
++ B_\theta \laplacian{\vec{e}_\theta}
++ 2 \big(\grad{B_\theta}\big) \cdot \grad{\vec{e}_\theta} \\
+&= \ab[
+\frac{1}{r} \pdv{}{r} \ab(r \pdv{B_\theta}{r})
+- \ab(\frac{1}{r^2} + k^2) B_\theta
+] \vec{e}_\theta
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}
-\laplace{B_\theta} &= \frac{1}{r} \pDeriv{}{r} \left(r \pDeriv{B_\theta}{r}\right)
-+ \frac{1}{r^2} \pDerivS{B_\theta}{\theta}
-+ \pDerivS{B_\theta}{z} \\
-&= \frac{1}{r} \pDeriv{}{r} \left(r \pDeriv{B_\theta}{r}\right)
-- \left(\frac{m^2}{r^2} + k_z^2\right) B_\theta \\
-&= \frac{1}{r} \pDeriv{}{r} \left(r \pDeriv{B_\theta}{r}\right)
+\laplacian{B_\theta} &= \frac{1}{r} \pdv{}{r} \ab(r \pdv{B_\theta}{r})
++ \frac{1}{r^2} \pdv[2]{B_\theta}{\theta}
++ \pdv[2]{B_\theta}{z} \\
+&= \frac{1}{r} \pdv{}{r} \ab(r \pdv{B_\theta}{r})
+- \ab(\frac{m^2}{r^2} + k_z^2) B_\theta \\
+&= \frac{1}{r} \pdv{}{r} \ab(r \pdv{B_\theta}{r})
 - k^2 B_\theta
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}
-\big(\grad{B_\theta}\big) \cdot \grad{\vector{e}_\theta}
-&= \frac{1}{r} \pDeriv{B_\theta}{\theta} \frac{1}{r} \pDeriv{\vector{e}_\theta}{\theta} \\
-&= - \im \frac{m}{r^2} B_\theta \vector{e}_r \\
+\big(\grad{B_\theta}\big) \cdot \grad{\vec{e}_\theta}
+&= \frac{1}{r} \pdv{B_\theta}{\theta} \frac{1}{r} \pdv{\vec{e}_\theta}{\theta} \\
+&= - \im \frac{m}{r^2} B_\theta \vec{e}_r \\
 &= 0
 \end{aligned}\end{equation}
 \begin{equation}
-\laplace{\vector{e}_\theta} = - \frac{1}{r^2} \vector{e}_\theta
+\laplacian{\vec{e}_\theta} = - \frac{1}{r^2} \vec{e}_\theta
 \end{equation}
 得
 \begin{equation}
-\frac{\eta}{\mu_0 r} \pDeriv{}{r} \left(r \pDeriv{B_\theta}{r}\right)
-- \left[ \frac{\eta}{\mu_0} \left(\frac{1}{r^2} + k^2\right) - \im \omega \right] B_\theta
+\frac{\eta}{\mu_0 r} \pdv{}{r} \ab(r \pdv{B_\theta}{r})
+- \ab[ \frac{\eta}{\mu_0} \ab(\frac{1}{r^2} + k^2) - \im \omega ] B_\theta
 = \im k B_0 u_\theta
 \end{equation}
 
 代入 $u_\theta$ 得
 \begin{equation} \label{eq:04MHDwaves_temp1}
-\frac{1}{r} \pDeriv{}{r} \left( r \pDeriv{B_\theta}{r} \right)
-+ \left( k_c^2 - \frac{1}{r^2} \right) B_\theta = 0
+\frac{1}{r} \pdv{}{r} \ab( r \pdv{B_\theta}{r} )
++ \ab( k_c^2 - \frac{1}{r^2} ) B_\theta = 0
 \end{equation}
 其中
 \begin{equation}
-k_c^2 = \im \frac{\mu_0}{\eta} \left( \omega - v_A^2 \frac{k^2}{\omega} \right) - k^2
+k_c^2 = \im \frac{\mu_0}{\eta} \ab( \omega - v_A^2 \frac{k^2}{\omega} ) - k^2
 \end{equation}
 式 \ref{eq:04MHDwaves_temp1} 为一阶贝塞尔方程的变形，其通解为
 \begin{equation}
@@ -442,22 +442,22 @@ B_\theta = c_1 J_1(k_c r)
 \eu^{\im(k z - \omega t)}
 \end{equation}
 为了得到色散关系，需要利用边界条件。
-假定 $r = a$ 处为完全导体壳，则 $\vector{n} \times \vector{E} = 0$。
+假定 $r = a$ 处为完全导体壳，则 $\vec{n} \times \vec{E} = 0$。
 
 电场扰动为
 \begin{equation}\begin{aligned}
-\vector{E}_1 &= \frac{\eta}{\mu_0} \curl{\vector{B}_1}
-- \vector{u}_1 \times \vector{B}_0 \\
-&= \left( B_0 u_\theta - \frac{\eta}{\mu_0} \pDeriv{B_\theta}{z} \right) \vector{e}_r
-+ \frac{\eta}{\mu_0 r} \pDeriv{}{r} \big( r B_\theta \big) \vector{e}_z
+\vec{E}_1 &= \frac{\eta}{\mu_0} \curl{\vec{B}_1}
+- \vec{u}_1 \times \vec{B}_0 \\
+&= \ab( B_0 u_\theta - \frac{\eta}{\mu_0} \pdv{B_\theta}{z} ) \vec{e}_r
++ \frac{\eta}{\mu_0 r} \pdv{}{r} \big( r B_\theta \big) \vec{e}_z
 \end{aligned}\end{equation}
 则
 \begin{equation}
-\frac{\eta}{\mu_0 r} \pDeriv{}{r} \big( r B_\theta \big) = 0
+\frac{\eta}{\mu_0 r} \pdv{}{r} \big( r B_\theta \big) = 0
 \end{equation}
 由贝塞尔函数性质
 \begin{equation}
-\Deriv{}{x} \big[ x^v J_v(x) \big] = x^v J_{v-1}(x)
+\odv{}{x} \big[ x^v J_v(x) \big] = x^v J_{v-1}(x)
 \end{equation}
 得
 \begin{equation}
@@ -466,7 +466,7 @@ J_0(k_c a) = 0
 
 则色散关系：
 \begin{equation}
-\im \frac{\mu_0}{\eta} \left( \omega - v_A^2 \frac{k^2}{\omega} \right) - k^2 = \frac{z_{0,n}^2}{a^2}
+\im \frac{\mu_0}{\eta} \ab( \omega - v_A^2 \frac{k^2}{\omega} ) - k^2 = \frac{z_{0,n}^2}{a^2}
 \end{equation}
 其中，$z_{v,n}$ 为第一型 Bessel 函数 $J_v(x)$ 的第 $n$ 个零点。
 
@@ -474,56 +474,56 @@ J_0(k_c a) = 0
 \begin{equation}
 \omega = \sqrt{
     v_A^2 k^2
-    - \frac{\eta^2}{4 \mu_0^2} \left( \frac{z_{0,n}^2}{a^2} + k^2 \right)^2
-} - \im \frac{\eta}{2 \mu_0} \left( \frac{z_{0,n}^2}{a^2} + k^2 \right)
+    - \frac{\eta^2}{4 \mu_0^2} \ab( \frac{z_{0,n}^2}{a^2} + k^2 )^2
+} - \im \frac{\eta}{2 \mu_0} \ab( \frac{z_{0,n}^2}{a^2} + k^2 )
 \end{equation}
 当 $\frac{\eta}{\mu_0} \frac{k^2}{\omega} \ll 1$ 时，有
 \begin{equation}
-\omega = v_A k - \im \frac{\eta}{2 \mu_0} \left( \frac{z_{0,n}^2}{a^2} + k^2 \right)
+\omega = v_A k - \im \frac{\eta}{2 \mu_0} \ab( \frac{z_{0,n}^2}{a^2} + k^2 )
 \end{equation}
 可以看出，波动被阻尼。
 当 $\eta$ 有限时，波动形成能级分立谱。
 
 \subsubsection{柱坐标系下的压缩阿尔芬波}
 
-本小节考虑流体的压缩效应 $\dive{\vector{u}_1} \neq 0$，但是为了简化问题，仍然只考虑轴对称情形，且只考虑理想 MHD。且考虑 $\vector{u}_1$ 和 $\vector{B}_1$ 的 $r$ 与 $z$ 方向的分量。
+本小节考虑流体的压缩效应 $\dive{\vec{u}_1} \neq 0$，但是为了简化问题，仍然只考虑轴对称情形，且只考虑理想 MHD。且考虑 $\vec{u}_1$ 和 $\vec{B}_1$ 的 $r$ 与 $z$ 方向的分量。
 
 \subsection{转动等离子体下的阿尔文波}
 
 在柱坐标系系统中，一个常见的现象是系统存在极向的转动速度。
 我们可以通过添加科里奥利力来描述非惯性系中物体的运动方程：
 \begin{equation}
-\rho \Deriv{\vector{u}}{t} = \vector{J} \times \vector{B} - \grad{p}
-+ 2 \rho \vector{u} \times \vector{\Omega}
-+ \rho \vector{\Omega} \times \big( \vector{\Omega} \times \vector{r} \big)
+\rho \mdv{\vec{u}}{t} = \vec{J} \times \vec{B} - \grad{p}
++ 2 \rho \vec{u} \times \vec{\Omega}
++ \rho \vec{\Omega} \times \big( \vec{\Omega} \times \vec{r} \big)
 \end{equation}
 其中，$\Omega(r)$ 为转动角频率，
-$2 \rho \vector{u} \times \vector{\Omega}$ 为科里奥利力，
-$\rho \vector{\Omega} \times ( \vector{\Omega} \times \vector{r} )$ 为惯性离心力。
+$2 \rho \vec{u} \times \vec{\Omega}$ 为科里奥利力，
+$\rho \vec{\Omega} \times ( \vec{\Omega} \times \vec{r} )$ 为惯性离心力。
 而惯性离心力只影响平衡量，不影响扰动量。
 
 
 \begin{equation}
-\omega^2 = \left( 1 \mp 2 \frac{\Omega}{\omega} \right)^{-1} v_A^2 k^2
+\omega^2 = \ab( 1 \mp 2 \frac{\Omega}{\omega} )^{-1} v_A^2 k^2
 \end{equation}？？？
 原来的剪切阿尔文波在科里奥利力的影响下也分裂成相速度 (频率) 高于及低于原来相速度 (频率) 的两支波。
 
 \subsubsection{磁旋转不稳定性}
 
 \begin{subequations}\begin{align}
-\pDeriv{\rho}{t} + \dive{(\rho \vector{u})} &= 0 \\
-\rho \pDeriv{\vector{u}}{t} &= \frac{1}{\mu_0} \big(\curl{\vector{B}}\big) \times \vector{B} - \grad{p} + \rho \vector{g} + \rho w \laplace{\vector{u}} \\
-\pDeriv{B}{t} &= \curl{\big(\vector{u} \times \vector{B}\big)} \\
-\dive{\vector{u}} &= 0
+\pdv{\rho}{t} + \dive{(\rho \vec{u})} &= 0 \\
+\rho \pdv{\vec{u}}{t} &= \frac{1}{\mu_0} \big(\curl{\vec{B}}\big) \times \vec{B} - \grad{p} + \rho \vec{g} + \rho w \laplacian{\vec{u}} \\
+\pdv{B}{t} &= \curl{\big(\vec{u} \times \vec{B}\big)} \\
+\dive{\vec{u}} &= 0
 \end{align}\end{subequations}
 
 平衡速度
 \begin{equation}
-\vector{u}_0 = r \Omega(r) \vector{e}_\theta
+\vec{u}_0 = r \Omega(r) \vec{e}_\theta
 \end{equation}
 
 \begin{equation}
-\Deriv{\Omega^2}{\ln{r}} + v_A^2 k^2 < 0
+\odv{\Omega^2}{\ln{r}} + v_A^2 k^2 < 0
 \end{equation}
 该判据被称作 Velikhov–Chandrasekhar 不稳定性判据，或者 Balbus-Hawley 判据。
 
@@ -533,7 +533,7 @@ $\rho \vector{\Omega} \times ( \vector{\Omega} \times \vector{r} )$ 为惯性离
 
 本小节中，我们只考虑磁场的非均匀性。
 为了简化问题，我们采取平板模型：
-$\rho_0 = \text{const}, \vector{B}_0 = B_0(x) \vector{e}_z, \vector{k} = k_y \vector{e}_y + k_z \vector{e}_z, f_1 = f_k(x) \exp{[\im(k_y y + k_z z - \omega t)]}$，
+$\rho_0 = \text{const}, \vec{B}_0 = B_0(x) \vec{e}_z, \vec{k} = k_y \vec{e}_y + k_z \vec{e}_z, f_1 = f_k(x) \exp{[\im(k_y y + k_z z - \omega t)]}$，
 且限定不可压缩情况。
 
 由于平衡磁场存在梯度，则压强分布不能是均匀的
@@ -544,42 +544,42 @@ p_0 + \frac{B_0^2}{2 \mu_0} = \text{const}
 
 欧姆定律给出
 \begin{equation}\begin{aligned}
-\pDeriv{\vector{B}_1}{t} &= \curl{\big( \vector{u}_1 \times \vector{B}_0 \big)} \\
-\pDeriv{\vector{B}_1}{t} &= \vector{B}_0 \cdot \grad{\vector{u}_1} - \vector{u}_1 \cdot \grad{\vector{B}_0} \\
-- \im \omega \vector{B}_1 &= \im k_z B_0 \vector{u}_1 - u_x \pDeriv{B_0}{x} \vector{e}_z
+\pdv{\vec{B}_1}{t} &= \curl{\big( \vec{u}_1 \times \vec{B}_0 \big)} \\
+\pdv{\vec{B}_1}{t} &= \vec{B}_0 \cdot \grad{\vec{u}_1} - \vec{u}_1 \cdot \grad{\vec{B}_0} \\
+- \im \omega \vec{B}_1 &= \im k_z B_0 \vec{u}_1 - u_x \pdv{B_0}{x} \vec{e}_z
 \end{aligned}\end{equation}
 
 动量方程给出
 \begin{equation}\begin{aligned}
-\rho_0 \Deriv{\vector{u}_1}{t} &= \vector{J}_1 \times \vector{B}_0 + \vector{J}_0 \times \vector{B}_1 - \grad{p_1} \\
-\rho_0 \pDeriv{\vector{u}_1}{t} &= \frac{1}{\mu_0} \Big[
-    \vector{B}_0 \cdot \grad{\vector{B}_1}
-    + \vector{B}_1 \cdot \grad{\vector{B}_0}
-    - \grad{\big( \vector{B}_0 \cdot \vector{B}_1 \big) }
+\rho_0 \mdv{\vec{u}_1}{t} &= \vec{J}_1 \times \vec{B}_0 + \vec{J}_0 \times \vec{B}_1 - \grad{p_1} \\
+\rho_0 \pdv{\vec{u}_1}{t} &= \frac{1}{\mu_0} \Big[
+    \vec{B}_0 \cdot \grad{\vec{B}_1}
+    + \vec{B}_1 \cdot \grad{\vec{B}_0}
+    - \grad{\big( \vec{B}_0 \cdot \vec{B}_1 \big) }
 \Big] - \grad{p_1} \\
-- \im \omega \rho_0 \vector{u}_1 &
-= \frac{1}{\mu_0} \left[
-    B_0 k_z \vector{B}_1
-    + \big( \vector{B}_1 \cdot \vector{e}_x \big) \pDeriv{B_0}{x} \vector{e}_z
-\right] - \grad{\left( p_1 + \frac{\vector{B}_0 \cdot \vector{B}_1}{\mu_0} \right)}
+- \im \omega \rho_0 \vec{u}_1 &
+= \frac{1}{\mu_0} \ab[
+    B_0 k_z \vec{B}_1
+    + \big( \vec{B}_1 \cdot \vec{e}_x \big) \pdv{B_0}{x} \vec{e}_z
+] - \grad{\ab( p_1 + \frac{\vec{B}_0 \cdot \vec{B}_1}{\mu_0} )}
 \end{aligned}\end{equation}
 
-代入 $\vector{B}_1$ 得
+代入 $\vec{B}_1$ 得
 \begin{equation}
-\left( \omega^2 - v_A^2 k_\parallel^2 \right) \vector{u}_1
-= - \im \frac{\omega}{\rho_0} \grad{\left( p_1 + \frac{\vector{B}_0 \cdot \vector{B}_1}{\mu_0} \right)}
+\ab( \omega^2 - v_A^2 k_\parallel^2 ) \vec{u}_1
+= - \im \frac{\omega}{\rho_0} \grad{\ab( p_1 + \frac{\vec{B}_0 \cdot \vec{B}_1}{\mu_0} )}
 \end{equation}
 
 这里我们可以用一种稍微不同的手法，利用梯度无旋来消元：
 \begin{equation}
-\curl{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \vector{u}_1 \right]} = 0
+\curl{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \vec{u}_1 ]} = 0
 \end{equation}
 考虑上式的 $x$ 分量：
 \begin{equation}\begin{aligned}
-\vector{e}_x \cdot \curl{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \vector{u}_1 \right]} &= 0 \\
-\dive{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \vector{u}_1 \times \vector{e}_x \right]} &= 0 \\
-\dive{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \left( u_z \vector{e}_y - u_y \vector{e}_z \right) \right]} &= 0 \\
-\im \left( \omega^2 - v_A^2 k_\parallel^2 \right) \left( u_z k_y - u_y k_z \right) &= 0
+\vec{e}_x \cdot \curl{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \vec{u}_1 ]} &= 0 \\
+\dive{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \vec{u}_1 \times \vec{e}_x ]} &= 0 \\
+\dive{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \ab( u_z \vec{e}_y - u_y \vec{e}_z ) ]} &= 0 \\
+\im \ab( \omega^2 - v_A^2 k_\parallel^2 ) \ab( u_z k_y - u_y k_z ) &= 0
 \end{aligned}\end{equation}
 得到
 \begin{equation}\label{eq:04MHDwaves_temp2}
@@ -587,45 +587,45 @@ u_z k_y - u_y k_z = 0
 \end{equation}
 类似地，
 \begin{equation}\begin{aligned}\label{eq:04MHDwaves_temp3}
-\vector{e}_z \cdot \curl{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \vector{u}_1 \right]} &= 0 \\
-\dive{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \vector{u}_1 \times \vector{e}_z \right]} &= 0 \\
-\dive{\left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \left( u_y \vector{e}_x - u_x \vector{e}_y \right) \right]} &= 0 \\
-\pDeriv{}{x} \left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) u_y \right]
-- \im \left( \omega^2 - v_A^2 k_\parallel^2 \right) u_x k_y &= 0
+\vec{e}_z \cdot \curl{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \vec{u}_1 ]} &= 0 \\
+\dive{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \vec{u}_1 \times \vec{e}_z ]} &= 0 \\
+\dive{\ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \ab( u_y \vec{e}_x - u_x \vec{e}_y ) ]} &= 0 \\
+\pdv{}{x} \ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) u_y ]
+- \im \ab( \omega^2 - v_A^2 k_\parallel^2 ) u_x k_y &= 0
 \end{aligned}\end{equation}
 
 将式 \ref{eq:04MHDwaves_temp2} 代入不可压缩条件得
 \begin{equation}
-u_y = \im \frac{k_y}{k^2} \pDeriv{u_x}{x}
+u_y = \im \frac{k_y}{k^2} \pdv{u_x}{x}
 \end{equation}
 再将上式代入式 \ref{eq:04MHDwaves_temp3} 得
 \begin{equation} \label{eq:04MHDwaves_temp4}
-\pDeriv{}{x} \left[ \left( \omega^2 - v_A^2 k_\parallel^2 \right) \pDeriv{u_x}{x} \right]
-- \left( \omega^2 - v_A^2 k_\parallel^2 \right) u_x k^2
+\pdv{}{x} \ab[ \ab( \omega^2 - v_A^2 k_\parallel^2 ) \pdv{u_x}{x} ]
+- \ab( \omega^2 - v_A^2 k_\parallel^2 ) u_x k^2
 = 0
 \end{equation}
 定义 $f(x) = \omega^2 - v_A^2 k_\parallel^2$，上式变为：
 \begin{equation}
-\pDeriv{}{x} \left[ f(x) \pDeriv{u_x}{x} \right]
+\pdv{}{x} \ab[ f(x) \pdv{u_x}{x} ]
 - f(x) u_x k^2
 = 0
 \end{equation}
 
 可以证明，函数 $f(x)$ 必有零点。证明过程如下：方程两边同时乘以 $u_x$ 的复共轭，然后积分，则有
 \begin{equation}\begin{aligned}
-\int_{-\infty}^{+\infty} u_x^* \left[
-    \pDeriv{}{x} \left( f(x) \pDeriv{u_x}{x} \right)
+\int_{-\infty}^{+\infty} u_x^* \ab[
+    \pdv{}{x} \ab( f(x) \pdv{u_x}{x} )
     - f(x) u_x k^2
-\right] \, \dif x &=0 \\
-\left.\left[ f(x) u_x^* \pDeriv{u_x}{x} \right]\right|_{-\infty}^{+\infty}
-- \int_{-\infty}^{+\infty} \left[
-    f(x) \left| \pDeriv{u_x}{x} \right|^2
+] \d x &=0 \\
+\ab.\ab[ f(x) u_x^* \pdv{u_x}{x} ]|_{-\infty}^{+\infty}
+- \int_{-\infty}^{+\infty} \ab[
+    f(x) \ab| \pdv{u_x}{x} |^2
     + f(x) |u_x|^2 k^2
-\right] \, \dif x &= 0 \\
+] \d x &= 0 \\
 \int_{-\infty}^{+\infty}
-    f(x) \left[ \left| \pDeriv{u_x}{x} \right|^2
-    + |u_x|^2 k^2 \right]
-\, \dif x &= 0
+    f(x) \ab[ \ab| \pdv{u_x}{x} |^2
+    + |u_x|^2 k^2 ]
+\d x &= 0
 \end{aligned}\end{equation}
 显然，由于被积分函数中，括号里的项恒大于零，$f(x)$ 在积分区间需有正有负，必有零点。
 假如平衡磁场是均匀的，则 $\omega = v_A k_\parallel$ 就是唯一的非平凡解；假如平衡磁场是不均匀的，则形成阿尔芬波连续 $\omega = v_A(x) k_\parallel$。
@@ -638,13 +638,13 @@ u_y = \im \frac{k_y}{k^2} \pDeriv{u_x}{x}
 
 表面波处理的是流体表面或者分界面处的情况。由于一般存在密度梯度，则式 \ref{eq:04MHDwaves_temp4} 变为
 \begin{equation}
-\pDeriv{}{x} \left[ \rho_0 \left( \omega^2 - v_A^2 k_\parallel^2 \right) \pDeriv{u_x}{x} \right]
-- \rho_0 \left( \omega^2 - v_A^2 k_\parallel^2 \right) u_x k^2
+\pdv{}{x} \ab[ \rho_0 \ab( \omega^2 - v_A^2 k_\parallel^2 ) \pdv{u_x}{x} ]
+- \rho_0 \ab( \omega^2 - v_A^2 k_\parallel^2 ) u_x k^2
 = 0
 \end{equation}
 在每个区域内部，上式简化成
 \begin{equation}
-\pDerivS{u_x}{x} - k^2 u_x = 0
+\pdv[2]{u_x}{x} - k^2 u_x = 0
 \end{equation}
 其通解为
 \begin{equation}
@@ -660,18 +660,18 @@ u_x = \begin{cases}
 
 在边界上，需要跨越边界积分：
 \begin{equation}\begin{aligned}
-\int_{0^-}^{0^+} \left\{
-    \pDeriv{}{x} \left[ \rho_0 \left( \omega^2 - v_A^2 k_\parallel^2 \right) \pDeriv{u_x}{x} \right]
-    - \rho_0 \left( \omega^2 - v_A^2 k_\parallel^2 \right) u_x k^2
-\right\} \, \dif x &=0 \\
-\left.\left[
-    \rho_0 \left( \omega^2 - v_A^2 k_\parallel^2 \right) \pDeriv{u_x}{x}
-\right]\right|_{0^-}^{0^+} &= 0
+\int_{0^-}^{0^+} \ab\{
+    \pdv{}{x} \ab[ \rho_0 \ab( \omega^2 - v_A^2 k_\parallel^2 ) \pdv{u_x}{x} ]
+    - \rho_0 \ab( \omega^2 - v_A^2 k_\parallel^2 ) u_x k^2
+\} \d x &=0 \\
+\ab.\ab[
+    \rho_0 \ab( \omega^2 - v_A^2 k_\parallel^2 ) \pdv{u_x}{x}
+]|_{0^-}^{0^+} &= 0
 \end{aligned}\end{equation}
 得
 \begin{equation}
 \omega^2 = \frac{\rho_1 v_{A1}^2 + \rho_2 v_{A2}^2}{\rho_1 + \rho_2} k_\parallel^2
-= \frac{B_1^2 + B_2^2}{\mu_0 \left(\rho_1 + \rho_2\right)} k_\parallel^2
+= \frac{B_1^2 + B_2^2}{\mu_0 \ab(\rho_1 + \rho_2)} k_\parallel^2
 \end{equation}
 
 \section{环形系统中的测地声模}
@@ -681,69 +681,69 @@ u_x = \begin{cases}
 因声波沿测地线传播而得名。
 
 出发方程依然是理想的 MHD 方程组，不考虑各向异性或者环向转动。
-托卡马克的平衡磁场 $\vector{B} = I(\ToroidalFlux) \grad{\zeta} + \grad{\zeta} \times \grad{\ToroidalFlux} $。
+托卡马克的平衡磁场 $\vec{B} = I(\psi) \grad{\zeta} + \grad{\zeta} \times \grad{\psi} $。
 
 \subsection{环坐标系下的线性化}
 
 定义扰动位移
 \begin{equation}
-\pDeriv{\vector{\xi}}{t} = \vector{u}_1
+\pdv{\vec{\xi}}{t} = \vec{u}_1
 \end{equation}
 易得
 \begin{equation}
-\vector{\xi} = \frac{\im}{\omega} \vector{u}_1
+\vec{\xi} = \frac{\im}{\omega} \vec{u}_1
 \end{equation}
 
 扰动位移和扰动磁场按如下形式分解：
 \begin{subequations}\begin{align}
-\vector{\xi} &
+\vec{\xi} &
 = \xi_r \grad{r}
-+ \xi_\theta \hat{\vector{b}} \times \grad{r}
-+ \xi_\parallel \hat{\vector{b}} \\
-\vector{B}_1 &
++ \xi_\theta \hat{\vec{b}} \times \grad{r}
++ \xi_\parallel \hat{\vec{b}} \\
+\vec{B}_1 &
 = B_r \grad{r}
-+ B_\theta \hat{\vector{b}} \times \grad{r}
-+ B_\parallel \hat{\vector{b}}
++ B_\theta \hat{\vec{b}} \times \grad{r}
++ B_\parallel \hat{\vec{b}}
 \end{align}\end{subequations}
 
 线性化连续性方程得
 \begin{equation}
-\rho_1 + \grad{\rho_0} \cdot \vector{\xi} + \rho_0 \dive{\vector{\xi}} = 0
+\rho_1 + \grad{\rho_0} \cdot \vec{\xi} + \rho_0 \dive{\vec{\xi}} = 0
 \end{equation}
 
 线性化状态方程得
 \begin{equation}
-p_1 + \grad{p_0} \cdot \vector{\xi} + \gamma p_0 \dive{\vector{\xi}} = 0
+p_1 + \grad{p_0} \cdot \vec{\xi} + \gamma p_0 \dive{\vec{\xi}} = 0
 \end{equation}
 
 线性化欧姆方程得
 \begin{equation}
-\vector{B}_1 = \curl{\big( \vector{\xi} \times \vector{B}_0 \big)}
+\vec{B}_1 = \curl{\big( \vec{\xi} \times \vec{B}_0 \big)}
 \end{equation}
 扰动磁场的分量为
 \begin{equation}\begin{aligned}
-B_r &= \frac{\vector{B}_1 \cdot \grad{r}}{\contraMetric{rr}} \\
-&= \frac{1}{\contraMetric{rr}} \dive{\left[ \big(\vector{\xi} \times \vector{B}_0 \big) \times \grad{r} \right]} \\
-&= \frac{\vector{B}_0}{\contraMetric{rr}} \cdot \grad{\big( \xi_r \contraMetric{rr} \big)}
+B_r &= \frac{\vec{B}_1 \cdot \grad{r}}{\Metric^{rr}} \\
+&= \frac{1}{\Metric^{rr}} \dive{\ab[ \big(\vec{\xi} \times \vec{B}_0 \big) \times \grad{r} ]} \\
+&= \frac{\vec{B}_0}{\Metric^{rr}} \cdot \grad{\big( \xi_r \Metric^{rr} \big)}
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}
-B_\parallel &= \vector{B}_1 \cdot \hat{\vector{b}} \\
+B_\parallel &= \vec{B}_1 \cdot \hat{\vec{b}} \\
 &= \frac{1}{B_0} \Big\{
-\dive{\Big[ \big(\vector{\xi} \times \vector{B}_0 \big) \times \vector{B}_0 \Big]}
-+ \big(\vector{\xi} \times \vector{B}_0 \big) \cdot \big(\curl{\vector{B}_0} \big)
+\dive{\Big[ \big(\vec{\xi} \times \vec{B}_0 \big) \times \vec{B}_0 \Big]}
++ \big(\vec{\xi} \times \vec{B}_0 \big) \cdot \big(\curl{\vec{B}_0} \big)
 \Big\} \\
 &= \frac{1}{B_0} \Big[
-\dive{\big( \vector{\xi} \cdot \vector{B}_0 \vector{B}_0 - B_0^2 \vector{\xi} \big)}
-- \mu_0 \vector{\xi} \cdot \big( \vector{J}_0 \times \vector{B}_0 \big)
+\dive{\big( \vec{\xi} \cdot \vec{B}_0 \vec{B}_0 - B_0^2 \vec{\xi} \big)}
+- \mu_0 \vec{\xi} \cdot \big( \vec{J}_0 \times \vec{B}_0 \big)
 \Big] \\
-&= - \frac{1}{B} \vector{\xi} \cdot \grad{\big(p_0 + B^2 \big)} - B \dive{\vector{\xi}}
+&= - \frac{1}{B} \vec{\xi} \cdot \grad{\big(p_0 + B^2 \big)} - B \dive{\vec{\xi}}
 \end{aligned}\end{equation}
 
 待续
 
 测地线曲率
 \begin{equation}
-    \kappa_g = \vector{\kappa} \cdot (\vector{n} \times \hat{\vector{b}} )
+    \kappa_g = \vec{\kappa} \cdot (\vec{n} \times \hat{\vec{b}} )
 \end{equation}
 
 \subsection{测地声模的色散关系}
@@ -757,7 +757,7 @@ B_\parallel &= \vector{B}_1 \cdot \hat{\vector{b}} \\
 
 GAM 的色散关系：
 \begin{equation}
-\omega^2 = \left( 2 + \frac{1}{q^2} \right) \frac{c_s^2}{R_0^2}
+\omega^2 = \ab( 2 + \frac{1}{q^2} ) \frac{c_s^2}{R_0^2}
 \end{equation}
 
 \section{剪切阿尔芬波的一般描述方法}

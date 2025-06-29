@@ -36,27 +36,27 @@
 
 平衡量：
 $\rho_0 = \rho_0(x),
-\vector{g} = - g \vector{e}_x,
-\vector{B}_0 = B_0(x) \vector{e}_z,
-\vector{u}_0 = 0 $ 。
+\vec{g} = - g \vec{e}_x,
+\vec{B}_0 = B_0(x) \vec{e}_z,
+\vec{u}_0 = 0 $ 。
 扰动量：
 $f_1 = f_x(x) \exp{[\im (k_y y + k_z z - \omega t)]},
-\dive{\vector{u}_1} = 0 $ 。
+\dive{\vec{u}_1} = 0 $ 。
 
 平衡条件可以写成：
 \begin{equation}
-\Deriv{}{x} \left(p_0 + \frac{B_0^2}{2 \mu_0} \right) + \rho_0 g = 0
+\odv{}{x} \ab(p_0 + \frac{B_0^2}{2 \mu_0} ) + \rho_0 g = 0
 \end{equation}
 
 \begin{equation} \label{eq:0521temp1}
-\pDeriv{}{x} \left[
-    \rho_0 \left( \omega^2 - v_A^2 k_z^2 \right)
-    \pDeriv{u_x}{x}
-\right]
-= \left[
-    \rho_0 \left( \omega^2 - v_A^2 k_z^2 \right)
-    - g \Deriv{\rho_0}{x}
-\right] u_x k^2
+\pdv{}{x} \ab[
+    \rho_0 \ab( \omega^2 - v_A^2 k_z^2 )
+    \pdv{u_x}{x}
+]
+= \ab[
+    \rho_0 \ab( \omega^2 - v_A^2 k_z^2 )
+    - g \odv{\rho_0}{x}
+] u_x k^2
 \end{equation}
 
 \paragraph{锐边界条件}
@@ -65,7 +65,7 @@ $f_1 = f_x(x) \exp{[\im (k_y y + k_z z - \omega t)]},
 将式 \ref{eq:0521temp1} 跨越分界面积分得
 \begin{equation}
 \omega^2
-= \frac{B_1^2 + B_2^2}{\mu_0 \left(\rho_1 + \rho_2\right)} k_\parallel^2
+= \frac{B_1^2 + B_2^2}{\mu_0 \ab(\rho_1 + \rho_2)} k_\parallel^2
 - A_T g k
 \end{equation}
 其中，$A_T = \dfrac{\rho_2 - \rho_1}{\rho_1 + \rho_2}$ 为阿特伍德（Atwood）数。
@@ -81,7 +81,7 @@ $f_1 = f_x(x) \exp{[\im (k_y y + k_z z - \omega t)]},
 
 \paragraph{固定边界条件} 在 $x = 0, h$ 处，扰动为零。密度满足 $\rho_0(x) = \rho_{0,c} \exp{(- x / L_D)} $，磁场满足 $B_0(x) = B_{0,c} \exp{(- x / 2 L_D)}$，扰动具有形式
 \begin{equation}
-u_x = u_{x,c} \sin{\left(\frac{n \pi x}{h}\right)} \eu^{\lambda x}
+u_x = u_{x,c} \sin{\ab(\frac{n \pi x}{h})} \eu^{\lambda x}
 \end{equation}
 
 \begin{equation}
@@ -117,7 +117,7 @@ KH 不稳定性指的是层流之间的相对运动导致的不稳定性，即�
 
 我们依然采用不可压缩、无粘滞的理想 MHD 方程组来研究 KH 不稳定性，并且考虑无磁化、无重力加速度的情况，但需要保留平衡流。
 
-动量方程 + 不可压缩条件 + $\vector{e}_y \cdot \curl{} = 0$
+动量方程 + 不可压缩条件 + $\vec{e}_y \cdot \curl{} = 0$
 
 对 KH 不稳定性来说，如果采用简正模的做法，将初始值问题简化成本征模问题，平滑剪切流的谱是稳定的。
 但是，无论是实验观测，还是数值模拟都表明，上述谱稳定的剪切流都是不稳定的。
@@ -167,7 +167,7 @@ RM 不稳定性的发展也可以分成四个阶段，简单来说 [79]：
 不可压缩、无粘滞的理想 MHD 方程组，无平衡流。
 
 \begin{equation}
-\rho_0 \pDerivS{\vector{\xi}}{t} = \mathscr{F} \vector{\xi}
+\rho_0 \pdv[2]{\vec{\xi}}{t} = \mathscr{F} \vec{\xi}
 \end{equation}
 其中，$\mathscr{F}$ 是一个线性的二阶微分张量算子：
 % \begin{equation}\begin{aligned}
@@ -176,30 +176,30 @@ RM 不稳定性的发展也可以分成四个阶段，简单来说 [79]：
 
 \subsection{\texorpdfstring{$\mathscr{F}$}{F} 算子的自伴性}
 
-对任意的矢量场 $\vector{\xi}$ 和 $\vector{\eta}$, 满足等式
+对任意的矢量场 $\vec{\xi}$ 和 $\vec{\eta}$, 满足等式
 \begin{equation}
-\int \vector{\eta} \cdot \mathscr{F} \vector{\xi} \d V
-= \int \vector{\xi} \cdot \mathscr{F} \vector{\eta} \d V
+\int \vec{\eta} \cdot \mathscr{F} \vec{\xi} \d V
+= \int \vec{\xi} \cdot \mathscr{F} \vec{\eta} \d V
 \end{equation}
 
 由 F 算子的自伴性可以轻松证明以下三点：
 1. $\omega^2$ 为实数;
-2. 满足运动方程的 $\vector{\xi}$ 是实矢量;
-3. 不同分立本征值 $\omega_n$ 所对应的本征矢 $\vector{\xi}_n$ 彼此正交。
+2. 满足运动方程的 $\vec{\xi}$ 是实矢量;
+3. 不同分立本征值 $\omega_n$ 所对应的本征矢 $\vec{\xi}_n$ 彼此正交。
 
 \subsubsection{无穷大磁流体体系下 \texorpdfstring{$\mathscr{F}$}{F} 算子的自伴性的证明}
 
 对于无穷大磁流体体系，边界处的平衡量及扰动量都可以视作零，因此理想磁流体体系的哈密顿量
 \begin{subequations}\begin{align}
 H &= \int \ab(
-    \frac12 \rho \vector{u}^2
-    + \frac{\vector{B}^2}{2\mu_0}
+    \frac12 \rho \vec{u}^2
+    + \frac{\vec{B}^2}{2\mu_0}
     + \frac{p}{\gamma - 1}
 ) \d V
 = K + W \\
-K &= \int \frac12 \rho \vector{u}^2 \d V \\
+K &= \int \frac12 \rho \vec{u}^2 \d V \\
 W &= \int \ab(
-    \frac{\vector{B}^2}{2\mu_0}
+    \frac{\vec{B}^2}{2\mu_0}
     + \frac{p}{\gamma - 1}
 ) \d V
 \end{align}\end{subequations}
@@ -207,18 +207,18 @@ W &= \int \ab(
 由于理想磁流体体系是一个保守系，总哈密顿量 (能量) 守恒，其中零阶和一阶哈密顿量又分别守恒，所以 (在准确到微扰展开的二阶) 二阶的哈密顿量也应是守恒量
 
 \begin{equation}
-\int \pDeriv{\vector{\xi}}{t} \cdot \mathscr{F} \vector{\xi}
-= - \pDeriv{\delta W_2}{t}
-= - \delta W_2\ab(\vector{\xi}, \pDeriv{\vector{\xi}}{t})
-- \delta W_2\ab(\pDeriv{\vector{\xi}}{t}, \vector{\xi})
+\int \pdv{\vec{\xi}}{t} \cdot \mathscr{F} \vec{\xi}
+= - \pdv{\delta W_2}{t}
+= - \delta W_2\ab(\vec{\xi}, \pdv{\vec{\xi}}{t})
+- \delta W_2\ab(\pdv{\vec{\xi}}{t}, \vec{\xi})
 \end{equation}
 
 \subsubsection{柱形磁流体体系下 \texorpdfstring{$\mathscr{F}$}{F} 算子的自伴性的证明}
 
 \begin{equation}
 H(t) = \int \ab[
-    \frac12 \rho_0 \ab(\pDeriv{\vector{\xi}}{t})^2
-    - \frac12 \vector{\xi} \cdot \mathscr{F} \vector{\xi}
+    \frac12 \rho_0 \ab(\pdv{\vec{\xi}}{t})^2
+    - \frac12 \vec{\xi} \cdot \mathscr{F} \vec{\xi}
 ] \d V
 \end{equation}
 
@@ -227,18 +227,18 @@ H(t) = \int \ab[
 \subsection{变分原理计算本征模}
 
 \begin{equation}
-\Omega^2(\vector{\xi}^*, \vector{\xi})
+\Omega^2(\vec{\xi}^*, \vec{\xi})
 = \dfrac{
-    - \int \vector{\xi}^* \cdot \mathscr{F} \vector{\xi} \d V
+    - \int \vec{\xi}^* \cdot \mathscr{F} \vec{\xi} \d V
 }{
-    \int \rho_0 \vector{\xi}^* \cdot \vector{\xi} \d V
+    \int \rho_0 \vec{\xi}^* \cdot \vec{\xi} \d V
 }
 \end{equation}
 
 \section{能量原理与势能函数的极小化}
 
 平衡位形的稳定条件是：
-对于所有满足边界条件的可能的位移 $\vector{\xi}$ 和矢势 $\vector{A}_1$，势能变化 $\delta W$ 为正，或者 $\delta W$ 的极小值须为正。
+对于所有满足边界条件的可能的位移 $\vec{\xi}$ 和矢势 $\vec{A}_1$，势能变化 $\delta W$ 为正，或者 $\delta W$ 的极小值须为正。
 这就是磁流体力学体系下的能量原理。
 
 \section{理想磁流体中的不稳定性概述与分类}
